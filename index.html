@@ -51,13 +51,6 @@ text-align: center;
 margin-bottom: 20px;
 }
 
-.logo-img {
-max-width: 280px;
-height: auto;
-margin: 10px auto;
-display: block;
-}
-
 .intro-text {
 font-size: 13px;
 line-height: 1.5;
@@ -96,12 +89,19 @@ align-items: start;
 .grid-2col { grid-template-columns: 1fr; }
 }
 
-.doc-img {
+.img-placeholder {
 width: 100%;
-height: auto;
-border: 1px solid #ddd;
+height: 200px;
+border: 2px dashed #999;
+background: #f8f8f8;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+color: #666;
 border-radius: 4px;
-object-fit: contain;
+text-align: center;
+padding: 10px;
 }
 
 /* Tableaux */
@@ -129,7 +129,7 @@ font-size: 13px;
 
 .text-red { color: #d00; font-weight: bold; }
 
-/* Bulles de remarque en bas de page */
+/* Bulles de remarque */
 .note-bubble {
 border: 2px solid #000;
 border-radius: 20px;
@@ -145,31 +145,29 @@ margin-top: 10px;
 
 <div class="page">
 
-<!-- EN-TÊTE / PAGE 1 -->
+<!-- EN-TÊTE -->
 <div class="title-box">
 <h1>ACCESSOIRISTES AUTOMOBILES</h1>
 </div>
 
 <div class="header-content">
-<img src="https://i.ibb.co/3ykG8mP/afj-logo.png" alt="AFJ Diffusion" class="logo-img" onerror="this.style.display='none'">
-
 <div class="intro-text">
-<p><strong>AFJ Diffusion</strong> est une petite entreprise familiale créée en 1994[span_0](start_span)[span_0](end_span).</p>
-<p>Qui opère en tant que semi-grossiste dans la vente d'accessoires automobiles[span_1](start_span)[span_1](end_span).</p>
-<p>Localisée principalement dans la région Île-de-France et ses alentours[span_2](start_span)[span_2](end_span).</p>
+<p><strong>AFJ Diffusion</strong> est une petite entreprise familiale créée en 1994.</p>
+<p>Qui opère en tant que semi-grossiste dans la vente d'accessoires automobiles.</p>
+<p>Localisée principalement dans la région Île-de-France et ses alentours.</p>
 <br>
-<p>Nous travaillons avec les <strong>stations services, lavages et garages mécaniques</strong>[span_3](start_span)[span_3](end_span).</p>
+<p>Nous travaillons avec les <strong>stations services, lavages et garages mécaniques</strong>.</p>
 <br>
 <p><strong>Spécialisé dans :</strong></p>
-<p>• Diffuseurs et parfums d'intérieur[span_4](start_span)[span_4](end_span)</p>
-<p>• Produits de nettoyage et ses accessoires d'entretiens[span_5](start_span)[span_5](end_span)</p>
-<p>• Accessoires automobile, énergies et ses dépannages[span_6](start_span)[span_6](end_span)</p>
-<p>• Les différents liquides[span_7](start_span)[span_7](end_span)</p>
-<p>• Baie petite mécanique[span_8](start_span)[span_8](end_span)</p>
-<p>• Lubrifiants automobile (Total, Castrol, Avia...)[span_9](start_span)[span_9](end_span)</p>
+<p>• Diffuseurs et parfums d'intérieur</p>
+<p>• Produits de nettoyage et ses accessoires d'entretiens</p>
+<p>• Accessoires automobile, énergies et ses dépannages</p>
+<p>• Les différents liquides</p>
+<p>• Baie petite mécanique</p>
+<p>• Lubrifiants automobile (Total, Castrol, Avia...)</p>
 </div>
 
-<p style="margin-top: 15px; font-weight: bold;">Pour toutes informations supplémentaires, nous sommes à votre entière écoute.[span_10](start_span)[span_10](end_span)</p>
+<p style="margin-top: 15px; font-weight: bold;">Pour toutes informations supplémentaires, nous sommes à votre entière écoute.</p>
 
 <div class="contact-bubbles">
 <div class="bubble">VINCENT : 06 49 89 22 49</div>
@@ -197,9 +195,7 @@ margin-top: 10px;
 Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, Cerise, Midnight chic, Pina colada, Mai tai, City style, Jungle, Rose-thorn, Supernova, Lavande, Beach-day, Relax et Cocktail fruit...
 </p>
 </div>
-<div>
-<img src="https://i.ibb.co/q9Wj44S/parfums1.jpg" alt="Parfums" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Visuels+Parfums'">
-</div>
+<div class="img-placeholder">Image Parfums</div>
 </div>
 
 <div class="grid-2col" style="margin-top: 15px;">
@@ -211,9 +207,7 @@ Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, C
 <tr><td>Imao grille Aérateur</td><td>X5</td></tr>
 </table>
 </div>
-<div>
-<img src="https://i.ibb.co/Lh2P83V/imao.jpg" alt=" Gamme Imao" class="doc-img" onerror="this.src='https://via.placeholder.com/400x200?text=Gamme+Imao'">
-</div>
+<div class="img-placeholder">Image Gamme Imao</div>
 </div>
 </div>
 
@@ -224,12 +218,12 @@ Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, C
 </div>
 
 <div class="grid-2col">
-<div>
-<img src="https://i.ibb.co/v4K6Jg0/nettoyage1.jpg" alt="Produits Nettoyage" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Nettoyants+Aerosols'">
-<p style="font-size: 11px; margin-top: 5px;">Nettoyant / Rénovateur plastique parfumé x6<br>Parfums Frais, Vanille, Fraise et citron[span_11](start_span)[span_11](end_span)</p>
+<div class="img-placeholder">
+Image Aérosols<br><br>
+<small>Rénovateur plastique parfumé x6 (Frais, Vanille, Fraise, Citron)</small>
 </div>
 <div>
-<div class="table-title">GAMME D'ENTRETIEN NÉOCLEAN 500ML[span_12](start_span)[span_12](end_span)</div>
+<div class="table-title">GAMME D'ENTRETIEN NÉOCLEAN 500ML</div>
 <table>
 <tr><td>Nettoyant soin plastique</td></tr>
 <tr><td>Nettoyant plastique satiné ou brillant</td></tr>
@@ -263,9 +257,7 @@ Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, C
 <tr><td>Kit réparation tubeless / Fusibles</td></tr>
 </table>
 </div>
-<div>
-<img src="https://i.ibb.co/C0LqMhh/depannage.jpg" alt="Dépannage" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Equipements+Depannage'">
-</div>
+<div class="img-placeholder">Image Équipements Dépannage</div>
 </div>
 </div>
 
@@ -276,25 +268,23 @@ Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, C
 </div>
 
 <div class="grid-2col">
+<div class="img-placeholder">Image Bidons AdBlue / Lave-glace</div>
 <div>
-<img src="https://i.ibb.co/3T4S7M3/liquides.jpg" alt="Liquides" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Bidons+AdBlue+et+Lave+Glace'">
-</div>
-<div>
-<div class="table-title text-red">Ad blue Standard :[span_13](start_span)[span_13](end_span)</div>
+<div class="table-title text-red">Ad blue Standard :</div>
 <table>
 <tr><td>AD Blue /5 l (x4)</td></tr>
 <tr><td>AD Blue /10 l</td></tr>
 <tr><td>AD 10L anti-cristallisant</td></tr>
 </table>
 
-<div class="table-title text-red">Ad blue Total :[span_14](start_span)[span_14](end_span)</div>
+<div class="table-title text-red">Ad blue Total :</div>
 <table>
 <tr><td>AD Blue /5 l total (x2)</td></tr>
 <tr><td>AD Blue /10 l total</td></tr>
 <tr><td>AD Blue clearnox /10 l</td></tr>
 </table>
 
-<div class="note-bubble">• Nos Ad Blues sont vendus avec bec verseur[span_15](start_span)[span_15](end_span)<br>• Possibilité de livraison de fût[span_16](start_span)[span_16](end_span)</div>
+<div class="note-bubble">• Nos Ad Blues sont vendus avec bec verseur<br>• Possibilité de livraison de fût</div>
 </div>
 </div>
 
@@ -306,7 +296,7 @@ Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, C
 <tr><td>Liquide refroidissement universel jaune / 5L</td><td>X4</td></tr>
 <tr><td>Liquide de refroidissement allemand G12 -37c / 5L</td><td>X4</td></tr>
 </table>
-<div class="note-bubble">• Possibilité de fût[span_17](start_span)[span_17](end_span)</div>
+<div class="note-bubble">• Possibilité de fût</div>
 </div>
 <div>
 <table>
@@ -315,7 +305,7 @@ Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, C
 <tr><td>Lave glace 4 saisons -15c / 2L</td><td>X12</td></tr>
 <tr><td>Lave glace hiver 4 saisons -15c / 5L</td><td>X4</td></tr>
 </table>
-<div class="note-bubble">Lave-glace sans méthanol[span_18](start_span)[span_18](end_span)</div>
+<div class="note-bubble">Lave-glace sans méthanol</div>
 </div>
 </div>
 </div>
@@ -344,9 +334,9 @@ Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, C
 </table>
 </div>
 <div>
-<img src="https://i.ibb.co/4WH2607/mecanique.jpg" alt="Baie mécanique" class="doc-img" onerror="this.src='https://via.placeholder.com/400x350?text=Atelier+et+Consommables'">
+<div class="img-placeholder">Image Atelier & Consommables</div>
 <div class="note-bubble" style="margin-top: 15px; text-align: center; width: 100%;">
-Nous ne faisons pas de pièces mécaniques[span_19](start_span)[span_19](end_span)
+Nous ne faisons pas de pièces mécaniques
 </div>
 </div>
 </div>
