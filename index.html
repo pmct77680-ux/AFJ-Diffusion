@@ -15,6 +15,12 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px)
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,system-ui,sans-serif;line-height:1.5}
 a{color:inherit}
 .wrap{max-width:1100px;margin:auto;padding:0 16px}
+.contact{background:#000;color:#fff;padding:12px 0;font-size:13px}
+.cgrid{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:center}
+.cgrid a{color:#fff;font-weight:800;text-decoration:none;background:rgba(255,255,255,.12);padding:6px 14px;border-radius:99px}
+.cgrid a:hover{background:var(--red)}
+.ctitle{font-weight:800;color:#ff6b6b}
+.cnote{margin:8px 0 0;text-align:center;color:#9aa4bd;font-size:12px}
 .hero{background:linear-gradient(135deg,#070c1a,#152247);color:#fff;padding:48px 0 40px;text-align:center}
 .hero h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(32px,7vw,64px);margin:8px 0;text-transform:uppercase}
 .hero h1 span{color:var(--red)}
@@ -43,11 +49,7 @@ a{color:inherit}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chips span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 10px;font-size:12px}
 .empty{text-align:center;color:var(--mute);padding:40px 0}
-.contact{background:var(--hero);color:#fff;padding:40px 0;margin-top:40px}
-.contact .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.contact .box{background:rgba(255,255,255,.07);border-radius:16px;padding:18px}
-.contact a{color:#fff;font-weight:800}
-footer{text-align:center;font-size:12px;color:var(--mute);padding:18px}
+footer{text-align:center;font-size:12px;color:var(--mute);padding:18px;margin-top:30px}
 #fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 6px 20px rgba(230,0,0,.45)}
 #drawer{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;display:none;justify-content:flex-end}
 #drawer.open{display:flex}
@@ -63,6 +65,18 @@ footer{text-align:center;font-size:12px;color:var(--mute);padding:18px}
 </style>
 </head>
 <body>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="cgrid">
+      <span class="ctitle">📞 Contactez-nous</span>
+      <a href="tel:0649892249">Vincent : 06 49 89 22 49</a>
+      <a href="tel:0608250559">René : 06 08 25 05 59</a>
+      <a href="mailto:afj.diffusion01@gmail.com">✉️ afj.diffusion01@gmail.com</a>
+    </div>
+    <p class="cnote">Nous sommes à votre entière écoute. Références moins courantes (moto, bateau, camions, poids lourds…) sur demande. Nous ne faisons pas de pièces mécaniques.</p>
+  </div>
+</section>
 
 <header class="hero">
   <div class="wrap">
@@ -83,18 +97,6 @@ footer{text-align:center;font-size:12px;color:var(--mute);padding:18px}
 
 <main class="wrap" id="main"></main>
 
-<section class="contact" id="contact">
-  <div class="wrap">
-    <h2 style="font-family:Orbitron,sans-serif;margin-top:0">Pour toutes informations</h2>
-    <p style="color:#cbd3e6">Nous sommes à votre entière écoute. Demandez-nous aussi les références moins courantes (moto, bateau, camions, poids lourds…).</p>
-    <div class="grid">
-      <div class="box">Vincent<br><a href="tel:0649892249">06 49 89 22 49</a></div>
-      <div class="box">René<br><a href="tel:0608250559">06 08 25 05 59</a></div>
-      <div class="box">E-mail<br><a href="mailto:afj.diffusion01@gmail.com">afj.diffusion01@gmail.com</a></div>
-    </div>
-    <p style="font-size:13px;color:#9aa4bd;margin-bottom:0">Nous ne faisons pas de pièces mécaniques.</p>
-  </div>
-</section>
 <footer>© 2027 AFJ Diffusion · Tous droits réservés</footer>
 
 <button id="fab" class="btn" onclick="toggle()">📋 Ma demande (<span id="n">0</span>)</button>
