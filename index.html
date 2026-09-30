@@ -3,40 +3,251 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Catalogue AFJ Diffusion</title>
+  <title>Catalogue AFJ Diffusion - Tout en 1</title>
+  <meta name="description" content="Catalogue AFJ Diffusion, fichier autonome tout en un, prêt pour GitHub Pages.">
   <style>
-    :root{--bg:#f7f7f7;--card:#fff;--accent:#2a7ae2;--text:#222;--muted:#666}
-    *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.4}
-    .container{width:95%;max-width:1100px;margin:0 auto;padding:20px 0}
-    .site-header{background:var(--card);border-bottom:1px solid #e6e6e6;padding:18px 0;margin-bottom:18px}
-    .site-header h1{margin:0;color:var(--accent);font-size:1.6rem}.subtitle{color:var(--muted);margin-top:6px}
-    #catalogue{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;align-items:start}
-    .product-card{background:var(--card);border:1px solid #eaeaea;padding:12px;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.03)}
-    .product-card img{width:100%;height:auto;display:block;border-radius:4px;cursor:pointer}
-    .product-title{font-weight:700;margin:8px 0 4px 0}.product-desc{color:var(--muted);font-size:0.95rem}.product-price{color:var(--accent);font-weight:700;margin-top:8px}
-    .site-footer{padding:12px 0;text-align:center;color:var(--muted);font-size:0.9rem;margin-top:24px}
+    :root{
+      --bg:#f7f7f7;
+      --card:#ffffff;
+      --accent:#2a7ae2;
+      --text:#222;
+      --muted:#666;
+      --radius:8px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .container{
+      width:94%;
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px 0;
+    }
+    .site-header{
+      background:linear-gradient(180deg,#ffffff,#fbfbfb);
+      border-bottom:1px solid #e6e6e6;
+      padding:18px 0;
+      margin-bottom:18px;
+      border-radius:var(--radius);
+    }
+    .site-header .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:52px;
+      height:52px;
+      border-radius:10px;
+      flex:0 0 52px;
+      overflow:hidden;
+      border:1px solid #e9e9e9;
+      background:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .site-header h1{margin:0;font-size:1.25rem;color:var(--accent)}
+    .subtitle{color:var(--muted);margin-top:6px;font-size:0.95rem}
+    #catalogue{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:18px;
+      align-items:start;
+      margin-top:18px;
+    }
+    .product-card{
+      background:var(--card);
+      border:1px solid #eaeaea;
+      padding:12px;
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(20,20,20,0.03);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .product-card img{width:100%;height:auto;display:block;border-radius:6px;cursor:pointer;object-fit:cover}
+    .product-title{font-weight:700;margin:0;font-size:1.03rem}
+    .product-desc{color:var(--muted);font-size:0.95rem;margin:0}
+    .product-price{color:var(--accent);font-weight:700;margin-top:auto}
+    .site-footer{
+      padding:12px 0;text-align:center;color:var(--muted);font-size:0.9rem;margin-top:24px;
+    }
+    .controls{
+      display:flex;
+      gap:8px;
+      margin-top:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .search{
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid #ddd;
+      background:#fff;
+      min-width:220px;
+    }
+    .btn{
+      padding:8px 12px;
+      border-radius:8px;
+      border:0;
+      background:var(--accent);
+      color:#fff;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .muted{color:var(--muted);font-size:0.9rem}
+    @media (max-width:600px){
+      .site-header,.site-footer{padding-left:12px;padding-right:12px}
+      .site-header h1{font-size:1.1rem}
+      .logo{width:44px;height:44px;flex:0 0 44px}
+    }
+    /* Modal image */
+    .modal {
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,0.75);
+      z-index:1000;
+      padding:20px;
+    }
+    .modal img{
+      max-width:100%;
+      max-height:100%;
+      border-radius:10px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.5);
+    }
+    .hidden{display:none}
+    /* petit style pour accessibilité focus */
+    a,button,input{outline-color:rgba(42,122,226,0.35)}
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container"><h1>Catalogue AFJ Diffusion</h1><p class="subtitle">Catalogue en ligne - Test</p></div>
+    <div class="container">
+      <div class="brand" style="align-items:center;">
+        <div class="logo" aria-hidden="true">
+          <!-- logo intégré en base64 (petit carré coloré) -->
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDQiIGZpbGw9IiMyYTdhZTgiIC8+PC9zdmc+" alt="">
+        </div>
+        <div>
+          <h1>Catalogue AFJ Diffusion</h1>
+          <div class="subtitle">Version tout-en-un, prêt pour GitHub Pages</div>
+        </div>
+      </div>
+
+      <div class="controls" style="margin-top:14px;">
+        <input id="search" class="search" type="search" placeholder="Rechercher un produit, ex: 'A', '19,90'">
+        <button id="clear" class="btn" type="button">Effacer</button>
+        <div class="muted" style="margin-left:auto">Produits affichés: <span id="count">0</span></div>
+      </div>
+    </div>
   </header>
-  <main class="container">
+
+  <main class="container" id="main">
     <section id="catalogue" aria-label="Liste des produits">
-      <article class="product-card">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsSAAALEgHS3X78AAABF0lEQVR4nO3QsQkAQBhE0Xf/6XcGm0Qw2gq4s3m5nJ2Z2dnZ2dnZ2dnZ2drY/8jv2gAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgP4F8gABY6FX1wAAAABJRU5ErkJggg==" alt="Produit A">
+      <!-- Exemples de produits inclus (images en base64) -->
+      <article class="product-card" data-title="Produit Exemple A" data-price="19.90">
+        <img class="product-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAABk9r6dAAAACXBIWXMAAAsSAAALEgHS3X78AAABeElEQVR4nO3UsQkAIAwEwZP+/YyHkKZ2r1oQxqIu7t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e1sQ8B9x1X4bP0p5QAAAABJRU5ErkJggg==" alt="Produit Exemple A">
         <h2 class="product-title">Produit Exemple A</h2>
-        <p class="product-desc">Description courte du produit A.</p>
+        <p class="product-desc">Description courte et claire du produit A, idéale pour tester.</p>
         <p class="product-price">Prix: 19,90 €</p>
       </article>
-      <article class="product-card">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsSAAALEgHS3X78AAABF0lEQVR4nO3QsQkAQBhE0Xf/6XcGm0Qw2gq4s3m5nJ2Z2dnZ2dnZ2dnZ2drY/8jv2gAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgP4F8gABY6FX1wAAAABJRU5ErkJggg==" alt="Produit B">
+
+      <article class="product-card" data-title="Produit Exemple B" data-price="29.90">
+        <img class="product-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAABk9r6dAAAACXBIWXMAAAsSAAALEgHS3X78AAABf0lEQVR4nO3UsQkAIAwEwZP+/YyHkKZ2r1oQxqIu7t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e1sQ8B9x1X4bP0p5QAAAABJRU5ErkJggg==" alt="Produit Exemple B">
         <h2 class="product-title">Produit Exemple B</h2>
-        <p class="product-desc">Description courte du produit B.</p>
+        <p class="product-desc">Description courte et claire du produit B.</p>
         <p class="product-price">Prix: 29,90 €</p>
       </article>
+
+      <!-- Dupliquez / modifiez ces <article> pour ajouter vos produits -->
     </section>
   </main>
-  <footer class="site-footer"><div class="container"><p>&copy; AFJ Diffusion</p></div></footer>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; AFJ Diffusion - Tout-en-un</p>
+    </div>
+  </footer>
+
+  <!-- Modal container (sera créé par JS) -->
+  <div id="img-modal" class="hidden" role="dialog" aria-modal="true" aria-label="Agrandir l'image"></div>
+
+  <script>
+    // Script simple: recherche, compteur produit, modal image, ajout facile de produits
+    (function(){
+      const search = document.getElementById('search');
+      const clear = document.getElementById('clear');
+      const countSpan = document.getElementById('count');
+      const catalogue = document.getElementById('catalogue');
+      const modal = document.getElementById('img-modal');
+
+      function updateCount() {
+        const visible = catalogue.querySelectorAll('.product-card:not([hidden])').length;
+        countSpan.textContent = visible;
+      }
+
+      // Filtrer les produits par texte ou prix
+      function filter(q) {
+        q = (q || '').toLowerCase().trim();
+        const cards = catalogue.querySelectorAll('.product-card');
+        cards.forEach(card => {
+          const title = (card.dataset.title || card.querySelector('.product-title')?.textContent || '').toLowerCase();
+          const price = (card.dataset.price || card.querySelector('.product-price')?.textContent || '').toLowerCase();
+          const desc = (card.querySelector('.product-desc')?.textContent || '').toLowerCase();
+          const match = !q || title.includes(q) || desc.includes(q) || price.includes(q);
+          card.hidden = !match;
+        });
+        updateCount();
+      }
+
+      // Recherche en temps réel
+      search.addEventListener('input', () => filter(search.value));
+      clear.addEventListener('click', () => { search.value=''; filter(''); search.focus(); });
+
+      // Modal d'image
+      document.addEventListener('click', (e) => {
+        if (e.target.matches('.product-image')) {
+          const src = e.target.getAttribute('src');
+          const alt = e.target.getAttribute('alt') || '';
+          modal.className = 'modal';
+          modal.innerHTML = '<img src="'+src+'" alt="'+alt+'">';
+          modal.addEventListener('click', () => { modal.className='hidden'; modal.innerHTML=''; }, { once: true });
+        }
+      });
+
+      // Initialiser compteur
+      updateCount();
+
+      // Facilité: fonction pour ajouter un produit dynamique (utilisez dans la console si besoin)
+      window.addProduct = function(title, desc, price, imgSrc) {
+        const art = document.createElement('article');
+        art.className = 'product-card';
+        art.dataset.title = title || '';
+        art.dataset.price = (price || '').toString();
+        art.innerHTML = '<img class="product-image" src="'+(imgSrc||'')+'" alt="'+(title||'')+'">'+
+                        '<h2 class="product-title">'+(title||'')+'</h2>'+
+                        '<p class="product-desc">'+(desc||'')+'</p>'+
+                        '<p class="product-price">Prix: '+(price||'')+'</p>';
+        catalogue.appendChild(art);
+        filter(search.value);
+      }
+
+      // Exemple: ajouter dynamiquement un produit si vous le souhaitez
+      // window.addProduct('Produit C (ex)', 'Description C', '39,90 €', 'data:image/...');
+
+    })();
+  </script>
 </body>
 </html>
