@@ -4,74 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AFJ Diffusion – Catalogue 2027</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef2fb;--card:#fff;--ink:#0b132b;--mute:#5b6478;--line:#dde2ec;--red:#e60000;--blue:#0055ff;--hero:#0b132b;
+:root{--bg:#f2f3f5;--card:#fff;--ink:#14171c;--mute:#6a7280;--line:#dfe2e7;--red:#d10000;--dark:#14171c;--dark2:#1f242c;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070c1a;--card:#121b35;--ink:#f4f6fa;--mute:#9aa4bd;--line:#23305a}}
-:root[data-theme="dark"]{--bg:#070c1a;--card:#121b35;--ink:#f4f6fa;--mute:#9aa4bd;--line:#23305a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1014;--card:#181c23;--ink:#eceef2;--mute:#9199a6;--line:#2a303a;--dark:#090b0e;--dark2:#12151a}}
+:root[data-theme="dark"]{--bg:#0e1014;--card:#181c23;--ink:#eceef2;--mute:#9199a6;--line:#2a303a;--dark:#090b0e;--dark2:#12151a}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,system-ui,sans-serif;line-height:1.5}
 a{color:inherit}
 .wrap{max-width:1100px;margin:auto;padding:0 16px}
-.contact{background:linear-gradient(90deg,#b80000,#e60000 45%,#0055ff);color:#fff;padding:12px 0;font-size:13px}
-.cgrid{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:center}
-.cgrid a{color:#fff;font-weight:800;text-decoration:none;background:rgba(0,0,0,.28);padding:6px 14px;border-radius:99px;transition:.2s}
-.cgrid a:hover{background:#fff;color:#e60000}
-.ctitle{font-weight:800}
-.cnote{margin:8px 0 0;text-align:center;color:#ffe3e3;font-size:12px}
-.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#050914,#0f1d45 60%,#1b2f6e);color:#fff;padding:56px 0 48px;text-align:center}
-.hero:before,.hero:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;filter:blur(70px);opacity:.35}
-.hero:before{background:#e60000;top:-160px;right:-100px}
-.hero:after{background:#0055ff;bottom:-180px;left:-100px}
-.hero .wrap{position:relative;z-index:1}
-.hero h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(34px,8vw,72px);margin:10px 0;text-transform:uppercase;letter-spacing:.02em}
-.hero h1 span{background:linear-gradient(90deg,#ff3b3b,#ff9a3b);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:660px;margin:0 auto 22px;color:#d4dcf0}
-.badge{display:inline-block;border:1px solid #ff5a5a;background:rgba(230,0,0,.15);color:#ff9a9a;border-radius:99px;padding:5px 16px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-.targets{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
-.targets span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);border-radius:14px;padding:10px 18px;font-weight:700;font-size:14px}
-.stripe{height:6px;background:repeating-linear-gradient(-45deg,#e60000 0 14px,#fff 14px 28px,#0055ff 28px 42px)}
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.contact{background:var(--dark);color:#fff;padding:12px 0;font-size:13px;border-bottom:3px solid var(--red)}
+.cgrid{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;justify-content:center}
+.cgrid a{color:#fff;font-weight:700;text-decoration:none;border:1px solid #3a4150;padding:6px 14px;border-radius:6px;transition:.2s}
+.cgrid a:hover{background:var(--red);border-color:var(--red)}
+.ctitle{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:#c9ced8}
+.cnote{margin:8px 0 0;text-align:center;color:#8d95a3;font-size:12px}
+.hero{background:repeating-linear-gradient(-45deg,rgba(255,255,255,.025) 0 14px,transparent 14px 28px),linear-gradient(180deg,var(--dark2),var(--dark));color:#fff;padding:54px 0 46px;text-align:center}
+.hero h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(32px,7vw,62px);margin:12px 0;text-transform:uppercase;letter-spacing:.03em}
+.hero h1 span{color:var(--red)}
+.hero p{max-width:660px;margin:0 auto 22px;color:#b9c0cc}
+.badge{display:inline-block;border:1px solid #3a4150;color:#c9ced8;border-radius:4px;padding:5px 14px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.targets{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+.targets span{border-left:3px solid var(--red);background:rgba(255,255,255,.06);padding:8px 16px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line);padding:10px 0;box-shadow:0 3px 12px rgba(0,0,0,.06)}
 .bar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.search{flex:1 1 220px;padding:11px 16px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;transition:.2s}
-.search:focus{outline:0;border-color:var(--red);box-shadow:0 0 0 4px rgba(230,0,0,.15)}
-.btn{border:0;border-radius:14px;padding:11px 18px;font:inherit;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#ff2b2b,#c40000);color:#fff;text-decoration:none;display:inline-block;transition:.2s}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
-.btn.alt{background:linear-gradient(135deg,#27c36a,#14873f)}.btn.mail{background:linear-gradient(135deg,#2f7bff,#0044cc)}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 0 4px;width:100%}
-.tabs button{white-space:nowrap;border:2px solid var(--a,var(--line));background:var(--card);color:var(--ink);border-radius:99px;padding:7px 15px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
-.tabs button:hover{transform:translateY(-2px)}
-.tabs button.on{background:var(--a,var(--red));color:#fff}
+.search{flex:1 1 220px;padding:11px 14px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.search:focus{outline:0;border-color:var(--red)}
+.btn{border:0;border-radius:6px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer;background:var(--red);color:#fff;text-decoration:none;display:inline-block;transition:.2s}
+.btn:hover{filter:brightness(1.12)}
+.btn.dark{background:var(--dark2)}.btn.alt{background:#1d7a4a}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;width:100%}
+.tabs button{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:7px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.tabs button:hover{border-color:var(--red)}
+.tabs button.on{background:var(--dark2);border-color:var(--dark2);color:#fff;box-shadow:inset 0 -3px 0 var(--red)}
 .cat{margin:34px 0}
-.chead{background:linear-gradient(135deg,var(--a),color-mix(in srgb,var(--a) 50%,#000));color:#fff;border-radius:20px;padding:18px 22px;margin-bottom:16px;box-shadow:0 10px 26px color-mix(in srgb,var(--a) 40%,transparent)}
-.chead h2{font-family:Orbitron,sans-serif;font-size:clamp(18px,4vw,26px);margin:0}
-.chead p{margin:4px 0 0;font-size:13px;opacity:.92}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
-.grp{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--a);border-radius:18px;padding:16px;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:.25s}
-.grp:hover{transform:translateY(-4px);box-shadow:0 14px 30px color-mix(in srgb,var(--a) 30%,transparent)}
-.grp h3{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--a)}
-.it{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 4px;border-top:1px solid var(--line);font-size:14px;border-radius:8px;transition:.15s}
+.chead{background:var(--dark2);color:#fff;border-left:5px solid var(--red);border-radius:6px;padding:16px 20px;margin-bottom:16px}
+.chead h2{font-family:Orbitron,sans-serif;font-size:clamp(17px,3.6vw,23px);margin:0;text-transform:uppercase;letter-spacing:.04em}
+.chead p{margin:4px 0 0;font-size:13px;color:#b9c0cc}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.grp{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;transition:.2s}
+.grp:hover{border-color:var(--red);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.grp h3{margin:0 0 10px;padding-bottom:8px;border-bottom:2px solid var(--red);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink)}
+.it{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 4px;border-top:1px solid var(--line);font-size:14px;transition:.15s}
 .it:first-of-type{border-top:0}
-.it:hover{background:color-mix(in srgb,var(--a) 10%,transparent)}
-.it span:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--a);margin-right:8px}
-.it button{flex:none;width:32px;height:32px;border-radius:50%;border:0;background:var(--a);color:#fff;font-size:19px;line-height:1;cursor:pointer;transition:.2s}
-.it button:hover{transform:scale(1.18) rotate(90deg)}
-.chips{display:flex;flex-wrap:wrap;gap:7px}
-.chips span{background:color-mix(in srgb,var(--a) 14%,var(--card));border:1px solid var(--a);border-radius:99px;padding:4px 12px;font-size:12px;font-weight:600}
+.it:hover{background:var(--bg)}
+.it button{flex:none;width:30px;height:30px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;line-height:1;cursor:pointer;transition:.2s}
+.it button:hover{background:var(--red);border-color:var(--red);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:3px 10px;font-size:12px}
 .empty{text-align:center;color:var(--mute);padding:40px 0}
-footer{text-align:center;font-size:12px;color:#cbd3e6;padding:22px;margin-top:40px;background:linear-gradient(135deg,#050914,#0f1d45)}
-#fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 8px 24px rgba(230,0,0,.5);font-size:15px}
-#drawer{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:40;display:none;justify-content:flex-end}
+footer{text-align:center;font-size:12px;color:#8d95a3;padding:22px;margin-top:40px;background:var(--dark);border-top:3px solid var(--red)}
+#fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+#drawer{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;display:none;justify-content:flex-end}
 #drawer.open{display:flex}
-#panel{width:min(420px,100%);height:100%;background:var(--card);display:flex;flex-direction:column;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));border-left:5px solid var(--red)}
-#panel h3{margin:0 0 10px;font-family:Orbitron,sans-serif}
+#panel{width:min(420px,100%);height:100%;background:var(--card);display:flex;flex-direction:column;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));border-left:4px solid var(--red)}
+#panel h3{margin:0 0 10px;font-family:Orbitron,sans-serif;text-transform:uppercase;font-size:16px}
 #list{flex:1;overflow:auto}
 .row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
 .qty{display:flex;align-items:center;gap:8px;font-weight:800}
-.qty button{width:28px;height:28px;border-radius:50%;border:0;background:var(--red);color:#fff;cursor:pointer}
-#panel input{width:100%;padding:11px;margin-top:8px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.qty button{width:26px;height:26px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+#panel input{width:100%;padding:11px;margin-top:8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
 .send{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .send a{text-align:center}
 </style>
@@ -81,10 +75,10 @@ footer{text-align:center;font-size:12px;color:#cbd3e6;padding:22px;margin-top:40
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="cgrid">
-      <span class="ctitle">📞 Contactez-nous</span>
+      <span class="ctitle">Contact</span>
       <a href="tel:0649892249">Vincent : 06 49 89 22 49</a>
       <a href="tel:0608250559">René : 06 08 25 05 59</a>
-      <a href="mailto:afj.diffusion01@gmail.com">✉️ afj.diffusion01@gmail.com</a>
+      <a href="mailto:afj.diffusion01@gmail.com">afj.diffusion01@gmail.com</a>
     </div>
     <p class="cnote">Nous sommes à votre entière écoute. Références moins courantes (moto, bateau, camions, poids lourds…) sur demande. Nous ne faisons pas de pièces mécaniques.</p>
   </div>
@@ -95,24 +89,23 @@ footer{text-align:center;font-size:12px;color:#cbd3e6;padding:22px;margin-top:40
     <span class="badge">Semi-grossiste · Professionnels</span>
     <h1>AFJ <span>Diffusion</span></h1>
     <p>Accessoiristes automobiles, entreprise familiale créée en 1994. Nous travaillons avec les stations-services, les lavages et les garages mécaniques en Île-de-France et alentours.</p>
-    <div class="targets"><span>⛽ Stations-services</span><span>🚿 Lavages</span><span>🔧 Garages mécaniques</span></div>
+    <div class="targets"><span>Stations-services</span><span>Lavages</span><span>Garages mécaniques</span></div>
   </div>
 </header>
-<div class="stripe"></div>
 
 <div class="bar">
   <div class="wrap">
-    <input id="q" class="search" type="search" placeholder="🔎 Rechercher un produit (ex : AdBlue, H7, Coca, tapis…)">
-    <a class="btn mail" href="#contact">Contact</a>
+    <input id="q" class="search" type="search" placeholder="Rechercher un produit (ex : AdBlue, H7, Coca, tapis…)">
+    <a class="btn dark" href="#contact">Contact</a>
     <div class="tabs" id="tabs"></div>
   </div>
 </div>
 
 <main class="wrap" id="main"></main>
 
-<footer>© 2027 AFJ Diffusion · Tous droits réservés</footer>
+<footer>© 2027 AFJ Diffusion · Accessoiristes automobiles · Tous droits réservés</footer>
 
-<button id="fab" class="btn" onclick="toggle()">📋 Ma demande (<span id="n">0</span>)</button>
+<button id="fab" class="btn" onclick="toggle()">Ma demande (<span id="n">0</span>)</button>
 
 <div id="drawer" onclick="if(event.target===this)toggle()">
   <div id="panel">
@@ -122,47 +115,46 @@ footer{text-align:center;font-size:12px;color:#cbd3e6;padding:22px;margin-top:40
     <input id="tel" type="tel" placeholder="Téléphone *">
     <div class="send">
       <a id="wa" class="btn alt" target="_blank" rel="noopener">WhatsApp</a>
-      <a id="ml" class="btn mail">E-mail</a>
+      <a id="ml" class="btn dark">E-mail</a>
     </div>
     <button class="btn" style="margin-top:8px;background:var(--mute)" onclick="toggle()">Fermer</button>
   </div>
 </div>
 
 <script>
-const COL={parfums:'#e6399b',nettoyage:'#0f9e96',boutique:'#f08a00',energies:'#d4a500',depannage:'#e03131',liquides:'#2f7bff',baie:'#7c4dff'};
 const C=[
-{id:'parfums',t:'🌲 Parfums & désodorisants',note:'Fabrication française. Conditionnement indiqué par « x ».',g:[
+{id:'parfums',t:'Parfums & désodorisants',note:'Fabrication française. Conditionnement indiqué par « x ».',g:[
  ['Classiques',['Arbre magique (x24)','Clips (x4)','Bottle (x5)','Cannette sapins (x6)','Wrap aérateur (x5)','Plaquette Imao (x10)','Plaquette édition sport','Vaporisateur / Spray (x10)','Imao grille aérateur (x5)']],
  ['Collection Coca / Fanta / Pepsi',['Présentoir Coca (Coca, vanille, cherry)','Bouteille Coca 3D','Plaquette Coca','Présentoir Fanta (grappe, orange, strawberry)','Bottle Fanta','Plaquette Fanta','Présentoir canette Pepsi','Canette Pepsi','Plaquette Pepsi']],
  ['California & diffuseurs',['Présentoir California (cerise, vanille ou mixte)','California aérateur','Diffuseur Vent-clip','Aroma diffuseur aérateur (black, cotton, bubble, vanille, cherry)','Plaquette papier parfumé Dia de los muertos','Géo Cat / Dog / Dot / Loop']],
  ['Vapo Alcantes',['Parfums Vapo','Présentoir (x32)','Recharge (x6)']]],
  chips:['Black','Vanille','Cotton','Fraise','Coco','Pêche','Bubble','Pomme citron','Cerise','Midnight chic','Piña colada','Maï thaï','City style','Jungle','Rose-thorn','Super-Nova','Lavande','Beach day','Relax','Cocktail fruit']},
-{id:'nettoyage',t:'🧽 Nettoyage & entretien',g:[
+{id:'nettoyage',t:'Nettoyage & entretien',g:[
  ['Gamme Redbull',['Lingette plastique intérieur','Nettoyant spray intérieur','Nettoyant spray extérieur','Cire extérieur carrosserie','Shampoing extérieur','Brillant pneu']],
  ['Gamme Néoclean 500 ml',['Nettoyant soin plastique','Plastique satiné ou brillant','Vitre pulvé','Vitre aérosol','Nettoyant tissus','Nettoyant insectes','Nettoyant moteur','Brillant pneu','Active mousse aérosol','Destructeur d\'odeur','Cire carrosserie effet miroir','Crème rénovateur micro-rayures','Efface-rayures','Crème soin cuir','Jantes vernies','Jantes alu et chromées','Jantes indigo']],
  ['Autres nettoyants',['Rénovateur plastique parfumé (x6) : frais, vanille, fraise, citron','Brillant plastique Lallanne','Abel nettoyant tissus + brosse','Abel goudron et résine']],
  ['Lingettes',['Wizzy : tableau de bord (brillant / satiné)','Wizzy : vitres','Wizzy : cuir','Wizzy : mains','Wizzy : multi-usage','Wizzy : pneu','Imao multi-usage parfumé : New York, Paris, Bali','Sachet de lingette à l\'unité Carwash (multi-usage ou vitre)']],
  ['Accessoires d\'entretien',['Microfibre multi-usage','Microfibre multi-usage XL','Microfibre spéciale vitre','Lavette chamoisine (x2)','Peau synthétique','Petite peau chamoisée véritable','Grande peau chamoisée véritable','Éponges marron','Raclette carrosserie','Plumeau Nenette','Plumeau chenille télescopique','Gant chenille','Brosse tissus (poils et silicone)','Brosse jante']],
  ['Tapis',['Lot 4 tapis (2 avant / 2 arrière)','Tapis tissu noir','Tapis tissu liseré gris','Tapis tissu liseré bleu','Tapis tissu liseré rouge','Tapis PVC noir','Tapis PVC utilitaire noir avant']]]},
-{id:'boutique',t:'🛒 Accessoires pour boutique',g:[
+{id:'boutique',t:'Accessoires pour boutique',g:[
  ['Produits divers',['DOT4 liquide de frein','Start-pilote','Graisse chaîne moto','Dégrippant Facom 400 ml','Nettoyant injecteur Facom diesel / essence','Nettoyant FAAP Facom 1 L','Nettoyant / détartrant radiateur Facom','Anti-fuite calcaire radiateur Facom','Anti-fuite huile moteur Facom','Bouchon réservoir','Bouchons valves (x5)']],
  ['Adhésifs, fixation & tabac',['Gros scotch chatterton (noir ou gris)','Ruban adhésif PVC noir / rouge (x2)','Colle glue (x2)','Tendeurs (x2)','Sangles à cliquet','Gants de manutention caoutchouc','Gants routier / manutention cuir','Feuilles OCB slim blanche / marron','Feuilles OCB petite blanche / marron','Briquets Bic / fantaisie']],
  ['Disques pour véhicules',['A électrostatique','A magnétique','Conduite accompagnée électrostatique','Conduite accompagnée magnétique','Bébé à bord électrostatique','Bébé à bord magnétique','Disque bleu de stationnement','Disque interdit de stationner']]]},
-{id:'energies',t:'⚡ Énergies & accessoires',note:'Nos chargeurs existent en 3 modèles : iPhone, USB et Type C.',g:[
+{id:'energies',t:'Énergies & accessoires',note:'Nos chargeurs existent en 3 modèles : iPhone, USB et Type C.',g:[
  ['Téléphone & charge',['Support téléphone (pince, ventouse ou magnétique)','Allume-cigare sortie USB / USB','Allume-cigare sortie USB / Type C','Allume-cigare 2 sorties USB avec cordon charge rapide','Allume-cigare 2 sorties Type C avec cordon charge rapide Type C','Cordon charge rapide USB','Cordon charge rapide Type C']],
  ['Piles, télécommandes & clés',['Blister 4 piles LR03','Blister 4 piles LR06','Blister 4 piles LR09','Blister 4 piles LR14','Blister 4 piles LR20','2 piles 1620 (2x10)','2 piles 2016 (2x10)','2 piles 2025 (2x10)','2 piles 2032 (2x10)','2 piles 2430 (2x10)','2 piles V23 GA (2x10)']],
  ['Ampoules véhicules (x10)',['Ampoule H1','Ampoule H3','Ampoule H4','Ampoule H7','C5W','R5W','W5W','PY21W','P21W','P21/5W','Kit ampoule H1','Kit ampoule H1/H7','Kit ampoule H4','Kit ampoule H7']]]},
-{id:'depannage',t:'🧰 Dépannage',note:'Beaucoup d\'autres références disponibles : moto, voiture, bateau, camions et poids lourds.',g:[
+{id:'depannage',t:'Dépannage',note:'Beaucoup d\'autres références disponibles : moto, voiture, bateau, camions et poids lourds.',g:[
  ['Sécurité & outillage',['Gilet jaune XL','Triangle de signalisation','Extincteur secours véhicule','Clé en croix renforcée','Clé télescopique démonte-pneu','Barre de remorquage','Jeux de clés double, étoile et à l\'aine']],
  ['Carburant & pneus',['Entonnoir avec filtre + rallonge bec verseur','Jerrican rouge + bec verseur 5 L (x10)','Jerrican rouge + bec verseur 10 L (x6)','Jerrican rouge + bec verseur 20 L (x6)','Bouchon réservoir universel','Compresseur allume-cigare Osram OTI200','Blister 5 bouchons valves pneu','Kit réparation tubeless','Kit fusibles et mini-fusibles (x10)']],
  ['Câbles de démarrage',['Câbles de démarrage < 16 mm²','Câbles de démarrage < 25 mm²','Câbles de démarrage < 35 mm²']],
  ['Batteries (Tech Power / Fiamm)',['Standard : T10, T15, T17, T21, T22','Renforcé : T1115, T1117','Start/stop : T215, T217, T221, T222','Haute / basse : L1 à L5 (50 à 100 A)','Fiamm : VR680, VR760, L150P, L260P, L370P']],
  ['Bombes anti-crevaison',['Holts 300 ml','Holts 400 ml','Holts 500 ml','Facom 400 ml','Facom 600 ml']]]},
-{id:'liquides',t:'💧 Les différents liquides',note:'AdBlue vendu avec bec verseur. Livraison de fût possible.',g:[
+{id:'liquides',t:'Les différents liquides',note:'AdBlue vendu avec bec verseur. Livraison de fût possible.',g:[
  ['AdBlue',['AdBlue standard 5 L (x4)','AdBlue standard 10 L','AdBlue 10 L anti-cristallisant','AdBlue Total 5 L (x2)','AdBlue Total 10 L','AdBlue Clearnox 10 L']],
  ['Refroidissement',['Universel jaune 2 L (x12)','Universel jaune 5 L (x4)','Allemand G12 rose -37 °C 2 L (x12)','Allemand G12 -37 °C 5 L (x4)']],
  ['Lave-glace',['Été 2 L (x12)','Été 5 L (x4)','4 saisons -15 °C 2 L (x12)','Hiver 4 saisons -15 °C 5 L (x4)','Sans méthanol']]]},
-{id:'baie',t:'🔧 Baie mécanique & entretiens',note:'Nous ne faisons pas de pièces mécaniques.',g:[
+{id:'baie',t:'Baie mécanique & entretiens',note:'Nous ne faisons pas de pièces mécaniques.',g:[
  ['Atelier',['Dégraissant sec / nettoyant frein','Dégraissant concentré multi-surface 5 / 20 L','Plaque d\'immatriculation alu (x10)','Plaque plastique + fond (x10)','Rivets blanc / bleu / noir (x200)','Boulon avec joint de vidange','Valves pneu (x100)','Masses d\'équilibrage adhésives','Crème de montage 5 / 20 kg','Mèches tubeless (x60)','Champignons tubeless (x24)','Colle à mèche / champignon']],
  ['Hygiène & protection',['Sac absorbant végétal (x40 L)','Sac absorbant minéral','Sac poubelle (x200)','Papier pistes / mécanique (x6)','Papier toilette (x6)','Crèmes / savons mains granuleux','Gants latex, nitrile, chimique','EPI : chaussures de sécurité, gilet, gants…']]]}
 ];
@@ -174,17 +166,17 @@ function render(){
     let gs=c.g.map(([n,its])=>[n,its.filter(x=>!q||x.toLowerCase().includes(q)||n.toLowerCase().includes(q))]).filter(g=>g[1].length);
     if(!gs.length)return;
     found+=gs.length;
-    h+=`<section class="cat" id="${c.id}" style="--a:${COL[c.id]}"><div class="chead"><h2>${c.t}</h2>${c.note?`<p>${c.note}</p>`:''}</div><div class="grid">`+
+    h+=`<section class="cat" id="${c.id}"><div class="chead"><h2>${c.t}</h2>${c.note?`<p>${c.note}</p>`:''}</div><div class="grid">`+
     gs.map(([n,its])=>`<div class="grp"><h3>${n}</h3>`+its.map(x=>`<div class="it"><span>${x}</span><button aria-label="Ajouter" onclick="add('${esc(x)}')">+</button></div>`).join('')+`</div>`).join('')+`</div>`+
-    (c.chips&&!q?`<div class="grp" style="margin-top:16px"><h3>Parfums disponibles</h3><div class="chips">${c.chips.map(x=>`<span>${x}</span>`).join('')}<span>…et d'autres</span></div></div>`:'')+`</section>`;
+    (c.chips&&!q?`<div class="grp" style="margin-top:14px"><h3>Parfums disponibles</h3><div class="chips">${c.chips.map(x=>`<span>${x}</span>`).join('')}<span>…et d'autres</span></div></div>`:'')+`</section>`;
   });
   $('main').innerHTML=found?h:'<p class="empty">Aucun produit trouvé. Contactez-nous : nous avons de nombreuses autres références.</p>';
 }
 function tabs(){
-  $('tabs').innerHTML=[['all','Tout']].concat(C.map(c=>[c.id,c.t])).map(([id,t])=>`<button style="--a:${COL[id]||'#e60000'}" class="${id===tab?'on':''}" onclick="setTab('${id}')">${t}</button>`).join('');
+  $('tabs').innerHTML=[['all','Tout']].concat(C.map(c=>[c.id,c.t])).map(([id,t])=>`<button class="${id===tab?'on':''}" onclick="setTab('${id}')">${t}</button>`).join('');
 }
 function setTab(id){tab=id;tabs();render();window.scrollTo({top:document.querySelector('.bar').offsetTop,behavior:'smooth'})}
-function add(n){const e=D.find(d=>d.n===n);e?e.q++:D.push({n,q:1});upd();$('fab').animate([{transform:'scale(1.15)'},{transform:'scale(1)'}],200)}
+function add(n){const e=D.find(d=>d.n===n);e?e.q++:D.push({n,q:1});upd();$('fab').animate([{transform:'scale(1.12)'},{transform:'scale(1)'}],200)}
 function chg(i,d){D[i].q+=d;if(D[i].q<=0)D.splice(i,1);upd()}
 function toggle(){$('drawer').classList.toggle('open')}
 function upd(){
