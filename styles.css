@@ -25,11 +25,8 @@ body{
   padding:18px 0;
   margin-bottom:18px;
 }
-.site-header h1{
-  margin:0;
-  color:var(--accent);
-}
-.subtitle{color:var(--muted); margin-top:6px;}
+.site-header h1{margin:0;color:var(--accent);font-size:1.6rem}
+.subtitle{color:var(--muted); margin-top:6px}
 #catalogue{
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
