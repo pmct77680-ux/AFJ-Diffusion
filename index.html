@@ -3,362 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AFJ Diffusion — Semi-grossiste en accessoires et équipements automobiles</title>
-<meta name="description" content="AFJ Diffusion : vente d'accessoires automobiles, produits de nettoyage, liquides, lubrifiants et matériel de dépannage pour stations-services, lavages et garages en Île-de-France.">
+<title>AFJ Diffusion - Catalogue 2027</title>
 <style>
-/* CSS Épuré & Accessible */
-:root {
---primary-color: #0d3b66;
---secondary-color: #f4d35e;
---accent-color: #e63946;
---bg-color: #f8f9fa;
---surface-color: #ffffff;
---text-color: #212529;
---text-light: #495057;
---border-color: #dee2e6;
---focus-ring: #005fcc;
-}
-
+/* RESET & BASE STYLES */
 * {
 box-sizing: border-box;
 margin: 0;
 padding: 0;
 }
-
 body {
-font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+background-color: #0f1115;
+color: #e1e1e1;
 line-height: 1.6;
-color: var(--text-color);
-background-color: var(--bg-color);
 }
-
-/* Évitement pour lecteurs d'écran / navigation au clavier */
-.skip-link {
-position: absolute;
-top: -40px;
-left: 0;
-background: var(--primary-color);
-color: white;
-padding: 8px 16px;
-z-index: 100;
+a {
+color: #ff0055;
 text-decoration: none;
 }
-.skip-link:focus {
-top: 0;
-}
 
+/* HEADER / HERO SECTION */
 header {
-background-color: var(--primary-color);
-color: #ffffff;
-padding: 2rem 1rem;
+background: linear-gradient(135deg, #050505 0%, #1a1c23 100%);
+border-bottom: 3px solid #ff0055;
+padding: 40px 20px;
 text-align: center;
 }
-
-header h1 {
-font-size: 2.2rem;
-margin-bottom: 0.5rem;
+.logo-title {
+font-size: 3rem;
+font-weight: 800;
+letter-spacing: 2px;
+color: #fff;
+text-shadow: 0 0 10px rgba(255, 0, 85, 0.6), 0 0 20px rgba(0, 225, 255, 0.4);
+margin-bottom: 10px;
 }
-
-header p {
-font-size: 1.1rem;
-color: #e0e0e0;
+.subtitle {
+font-size: 1.2rem;
+color: #00e1ff;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+margin-bottom: 20px;
 }
-
-.container {
-max-width: 1200px;
+.about-card {
+max-width: 800px;
 margin: 0 auto;
-padding: 2rem 1rem;
-}
-
-/* Section À propos & Contact */
-.info-card {
-background: var(--surface-color);
-border: 1px solid var(--border-color);
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 255, 255, 0.1);
 border-radius: 8px;
-padding: 1.5rem;
-margin-bottom: 2rem;
-box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+padding: 20px;
+text-align: left;
 }
-
-.info-card h2 {
-color: var(--primary-color);
-margin-bottom: 1rem;
-border-bottom: 2px solid var(--primary-color);
-padding-bottom: 0.5rem;
-}
-
-.contacts-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 1rem;
-margin-top: 1rem;
-}
-
-.contact-item {
-background: #eef2f7;
-padding: 1rem;
-border-radius: 6px;
-font-weight: bold;
-}
-
-.contact-item a {
-color: var(--primary-color);
-text-decoration: underline;
-}
-
-.contact-item a:focus, .contact-item a:hover {
-color: var(--accent-color);
-}
-
-/* Navigation par catégories */
-nav[aria-label="Catégories du catalogue"] {
-margin-bottom: 2rem;
-}
-
-.category-nav {
+.contact-info {
 display: flex;
 flex-wrap: wrap;
-gap: 0.5rem;
-list-style: none;
+justify-content: space-around;
+margin-top: 20px;
+padding-top: 15px;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+font-weight: bold;
+}
+.contact-info div {
+margin: 5px 10px;
 }
 
-.category-nav a {
-display: block;
-padding: 0.5rem 1rem;
-background: var(--surface-color);
-border: 1px solid var(--primary-color);
-color: var(--primary-color);
-border-radius: 20px;
-text-decoration: none;
-font-weight: 600;
-font-size: 0.9rem;
+/* CONTAINER & LAYOUT */
+.container {
+max-width: 1200px;
+margin: 30px auto;
+padding: 0 20px;
 }
-
-.category-nav a:hover, .category-nav a:focus {
-background: var(--primary-color);
-color: #ffffff;
-outline: 2px solid var(--focus-ring);
-}
-
-/* Grille du catalogue */
-.catalog-grid {
+.grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 1.5rem;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 25px;
 }
 
-section.category-card {
-background: var(--surface-color);
-border: 1px solid var(--border-color);
-border-radius: 8px;
-padding: 1.5rem;
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+/* CARDS & SECTIONS */
+.card {
+background: #161920;
+border: 1px solid #282c37;
+border-radius: 10px;
+padding: 25px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+transform: translateY(-3px);
+border-color: #00e1ff;
+}
+.card h2 {
+font-size: 1.4rem;
+color: #00e1ff;
+border-bottom: 2px solid #ff0055;
+padding-bottom: 8px;
+margin-bottom: 15px;
+text-transform: uppercase;
+}
+.card h3 {
+font-size: 1.1rem;
+color: #ff0055;
+margin: 15px 0 8px 0;
+}
+.card ul {
+list-style-type: none;
+padding-left: 0;
+}
+.card ul li {
+padding: 5px 0;
+border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+position: relative;
+padding-left: 18px;
+}
+.card ul li::before {
+content: "•";
+color: #ff0055;
+font-weight: bold;
+position: absolute;
+left: 0;
 }
 
-section.category-card h2 {
-font-size: 1.3rem;
-color: var(--primary-color);
-margin-bottom: 1rem;
-border-bottom: 2px solid var(--secondary-color);
-padding-bottom: 0.3rem;
-}
-
-.product-list {
-list-style: none;
-}
-
-.product-list li {
-padding: 0.4rem 0;
-border-bottom: 1px dashed var(--border-color);
-}
-
-.product-list li:last-child {
-border-bottom: none;
-}
-
+/* SPECIAL HIGHLIGHTS */
 .badge {
-display: inline-block;
-background: #e9ecef;
-color: var(--text-light);
+background: #ff0055;
+color: white;
 font-size: 0.8rem;
-padding: 0.1rem 0.4rem;
+padding: 2px 6px;
 border-radius: 4px;
-margin-left: 0.5rem;
+margin-left: 5px;
 }
-
-.notice {
-background-color: #fff3cd;
-border-left: 4px solid #ffc107;
-padding: 1rem;
-margin-top: 2rem;
-border-radius: 4px;
-}
-
-footer {
-background: var(--primary-color);
-color: #ffffff;
-text-align: center;
-padding: 1.5rem 1rem;
-margin-top: 3rem;
+.note {
 font-size: 0.9rem;
+font-style: italic;
+color: #a0a0a0;
+margin-top: 10px;
 }
 
-/* Accessibilité visuelle au clavier */
-a:focus, button:focus {
-outline: 3px solid var(--focus-ring);
-outline-offset: 2px;
+/* FOOTER */
+footer {
+text-align: center;
+padding: 30px;
+background: #08090c;
+border-top: 1px solid #1a1c23;
+margin-top: 50px;
+color: #7a7a7a;
 }
 </style>
 </head>
 <body>
 
-<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<!-- HEADER / PRESENTATION -->
+<header>
+<div class="logo-title">AFJ DIFFUSION</div>
+<div class="subtitle">Accessoiristes Automobiles — Semi-Grossiste</div>
 
-<header role="banner">
-<h1>AFJ Diffusion</h1>
-<p>Semi-grossiste en accessoires &amp; équipements automobiles depuis 1994</p>
+<div class="about-card">
+<p><strong>AFJ Diffusion</strong> est une petite entreprise familiale créée en 1994, opérant en tant que semi-grossiste dans la vente d’accessoires automobiles[span_1](start_span)[span_1](end_span). Localisés principalement en région Île-de-France et ses alentours, nous travaillons avec les stations-services, lavages et garages mécaniques[span_2](start_span)[span_2](end_span).</p>
+
+<div class="contact-info">
+<div>📞 Vincent : 06 49 89 22 49</div>
+<div>📞 René : 06 08 25 05 59</div>
+<div>✉️ afj.diffusion01@gmail.com</div>
+</div>
+</div>
 </header>
 
-<main id="main-content" class="container" tabindex="-1">
+<!-- CATALOGUE CONTENT -->
+<div class="container">
+<div class="grid">
 
-<!-- À propos et Contacts -->
-<section class="info-card" aria-labelledby="about-heading">
-<h2 id="about-heading">À propos de l'entreprise</h2>
-<p>[span_0](start_span)[span_0](end_span)AFJ Diffusion est une entreprise familiale créée en 1994, opérant comme semi-grossiste spécialisé dans la vente d’accessoires automobiles.[/cite][span_1](start_span)[span_1](end_span)Implantés en Île-de-France et ses alentours, nous fournissons les stations-services, centres de lavage et garages mécaniques.[/cite]</p>
-
-<div class="contacts-grid">
-<div class="contact-item">
-<p><strong>Vincent :</strong> <a href="tel:0649892249" aria-label="Téléphoner à Vincent au 06 49 89 22 49">[span_2](start_span)[span_2](end_span)06 49 89 22 49[/cite]</a></p>
-</div>
-<div class="contact-item">
-<p><strong>René :</strong> <a href="tel:0608250559" aria-label="Téléphoner à René au 06 08 25 05 59">[span_3](start_span)[span_3](end_span)06 08 25 05 59[/cite]</a></p>
-</div>
-<div class="contact-item">
-<p><strong>E-mail :</strong> <a href="mailto:afj.diffusion01@gmail.com">[span_4](start_span)[span_4](end_span)afj.diffusion01@gmail.com[/cite]</a></p>
-</div>
-</div>
-</section>
-
-<!-- Navigation rapide -->
-<nav aria-label="Catégories du catalogue">
-<ul class="category-nav">
-<li><a href="#parfums">Parfums &amp; Désodorisants</a></li>
-<li><a href="#nettoyage">Produits de Nettoyage</a></li>
-<li><a href="#entretien">Accessoires d'Entretien</a></li>
-<li><a href="#accessoires">Boutique &amp; Accessoires</a></li>
-<li><a href="#energie">Énergies &amp; Éclairage</a></li>
-<li><a href="#depannage">Dépannage &amp; Sécurité</a></li>
-<li><a href="#liquides">Liquides &amp; AdBlue</a></li>
-<li><a href="#mecanique">Baie Mécanique</a></li>
+<!-- 1. PARFUMS ET DÉSODORISANTS -->
+<div class="card">
+<h2>Parfums & Désodorisants</h2>
+<ul>
+<li><strong>Arbre Magique :</strong> X24</li>
+<li><strong>Clips :</strong> X4</li>
+<li><strong>Bottle :</strong> X5</li>
+<li><strong>Cannette Sapins :</strong> X6</li>
+<li><strong>Wrap Aérateur :</strong> X5</li>
 </ul>
-</nav>
 
-<!-- Grille des produits -->
-<div class="catalog-grid">
+<h3>Parfums disponibles</h3>
+<p class="note">Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme Citron, Cerise, Midnight Chic, Pina Colada, Mai Thaï, City Style, Jungle, Rose-Thorn, Super-Nova, Lavande, Beach-Day, Relax, Cocktail Fruit...</p>
 
-<!-- Section Parfums -->
-<section id="parfums" class="category-card" aria-labelledby="cat-parfums">
-<h2 id="cat-parfums">[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)Parfums &amp; Désodorisants[/cite]</h2>
-<ul class="product-list">
-<li>[span_7](start_span)[span_7](end_span)Arbre Magique (X24)[/cite]</li>
-<li>[span_8](start_span)[span_8](end_span)Clips (X4), Bottles (X5), Wrap Aérateur (X5)[/cite]</li>
-<li>[span_9](start_span)[span_9](end_span)Gamme California Scents (Canettes, Présentoirs, Aérateurs)[/cite]</li>
-<li>[span_10](start_span)[span_10](end_span)Gamme Imao (Plaquettes X10, Édition Sport, Vaporisateurs X10, Grilles Aérateur X5)[/cite]</li>
-<li>[span_11](start_span)[span_11](end_span)Gamme Alcantes (Présentoir X32, Recharges X6)[/cite]</li>
-<li>[span_12](start_span)[span_12](end_span)Gamme Coca-Cola, Pepsi &amp; Fanta (Canettes, Plaquettes, Diffuseurs 3D)[/cite]</li>
-<li>[span_13](start_span)[span_13](end_span)Senteurs disponibles : Vanille, Coco, Fraise, Citron, Black, Cotton, Pêche, Bubble, Cerise, Midnight Chic, Pina Colada, Mai Thaï, City Style, Jungle, Super-Nova, Lavande, Beach-Day, Relax...[/cite]</li>
+<h3>Gammes Spéciales</h3>
+<ul>
+<li><strong>Parfums Vapo Alcantes :</strong> Présentoir X32 / Recharge X6</li>
+<li><strong>Présentoir Coca :</strong> Coca, Vanille Cherry</li>
+<li><strong>Présentoir California :</strong> Cerise, Vanille ou Mixte</li>
+<li><strong>Plaquettes papier parfumés :</strong> Día de los Muertos</li>
+<li><strong>Bouteille Coca 3D :</strong> Coca, Vanille, Cherry</li>
+<li><strong>Gamme Fanta & Pepsi :</strong> Canette Pepsi, Présentoir Pepsi, Présentoir Fanta (Grape, Orange, Strawberry), Plaquettes (Fanta, Coca, Pepsi)</li>
+<li><strong>Aroma Diffuseur Aérateur :</strong> Black, Cotton, Bubble, Vanille, Cherry</li>
+<li><strong>Gamme GEO :</strong> Geo Cat, Geo Dog, Geo Dot, Geo Loop</li>
+<li><strong>Made in France — Imao :</strong> Plaquettes Imao (x10), Plaquettes Édition Sport, Vaporisateur/Spray (x10), Imao grille Aérateur (x5)</li>
 </ul>
-</section>
-
-<!-- Section Nettoyage -->
-<section id="nettoyage" class="category-card" aria-labelledby="cat-nettoyage">
-<h2 id="cat-nettoyage">[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span)Produits de Nettoyage[/cite]</h2>
-<ul class="product-list">
-<li>[span_16](start_span)[span_16](end_span)Gamme Red Bull Racing (Nettoyants spray intérieur/extérieur, Cire, Shampoing, Brillant pneu)[/cite]</li>
-<li>[span_17](start_span)[span_17](end_span)Gamme NéoClean 500ml (Nettoyant plastique, Vitres, Tissus, Insectes, Moteur, Cire miroir, Efface-rayures, Soin cuir)[/cite]</li>
-<li>[span_18](start_span)[span_18](end_span)Nettoyants Jantes (Vernis, Alu/Chrome, Indigo)[/cite]</li>
-<li>[span_19](start_span)[span_19](end_span)Produits AbelAuto &amp; Shine (Rénovateur plastique parfumé, Nettoyant tissus avec brosse, Dégoudronnant)[/cite]</li>
-</ul>
-</section>
-
-<!-- Section Accessoires d'entretien -->
-<section id="entretien" class="category-card" aria-labelledby="cat-entretien">
-<h2 id="cat-entretien">[span_20](start_span)[span_20](end_span)[span_21](start_span)[span_21](end_span)Accessoires d'Entretien[/cite]</h2>
-<ul class="product-list">
-<li>[span_22](start_span)[span_22](end_span)Lingettes spécialisées (Wizzy, Imao, Carwash à l'unité : Tableau de bord, Vitres, Cuir, Multi-usage)[/cite]</li>
-<li>[span_23](start_span)[span_23](end_span)Microfibres (Standard, XL, Spécial vitres)[/cite]</li>
-<li>[span_24](start_span)[span_24](end_span)Peaux de chamois (Synthétique, Véritable grande et petite, Lavette chamoisine X2)[/cite]</li>
-<li>[span_25](start_span)[span_25](end_span)Brosses &amp; Accessoires (Brosse jantes, Brosse poils/silicone, Éponges, Raclette carrosserie, Plumeau télescopique, Gant chenille)[/cite]</li>
-<li>[span_26](start_span)[span_26](end_span)Tapis de sol (Lots de 4 tapis tissu noir/liseré, Tapis PVC universels et utilitaires)[/cite]</li>
-</ul>
-</section>
-
-<!-- Section Boutique & Accessoires -->
-<section id="accessoires" class="category-card" aria-labelledby="cat-accessoires">
-<h2 id="cat-accessoires">Accessoires de Boutique</h2>
-<ul class="product-list">
-<li>[span_27](start_span)[span_27](end_span)Produits techniques Facom, Holts &amp; WD-40 (Dégrippant, Anti-fuite, Nettoyant injecteur, Start-Pilote)[/cite]</li>
-<li>[span_28](start_span)[span_28](end_span)Consommables (Feuilles OCB Slim/Petites, Briquets Bic, Colle Glue, Scotch Chatterton, Tendeurs, Sangles)[/cite]</li>
-<li>[span_29](start_span)[span_29](end_span)Équipements de protection (Gants manutention cuir/caoutchouc)[/cite]</li>
-<li>[span_30](start_span)[span_30](end_span)Signalétique &amp; Disques (Disques A, Conduite accompagnée, Bébé à bord - électrostatiques/magnétiques, Disques de stationnement)[/cite]</li>
-</ul>
-</section>
-
-<!-- Section Énergies & Éclairage -->
-<section id="energie" class="category-card" aria-labelledby="cat-energie">
-<h2 id="cat-energie">[span_31](start_span)[span_31](end_span)[span_32](start_span)[span_32](end_span)Énergies, Connectique &amp; Éclairage[/cite]</h2>
-<ul class="product-list">
-<li>[span_33](start_span)[span_33](end_span)Chargeurs &amp; Câbles (Supports téléphone, Prises allume-cigare USB/Type-C, Cordon charge rapide)[/cite]</li>
-<li>[span_34](start_span)[span_34](end_span)Piles (Blisters LR03, LR06, LR09, LR14, LR20 / Piles boutons 1620, 2016, 2025, 2032, 2430, V23GA)[/cite]</li>
-<li>[span_35](start_span)[span_35](end_span)Ampoules Philips (H1, H3, H4, H7, C5W, R5W, W5W, PY21W, P21W, P21/5W &amp; Kits ampoules)[/cite]</li>
-</ul>
-</section>
-
-<!-- Section Dépannage -->
-<section id="depannage" class="category-card" aria-labelledby="cat-depannage">
-<h2 id="cat-depannage">[span_36](start_span)[span_36](end_span)[span_37](start_span)[span_37](end_span)Dépannage &amp; Sécurité[/cite]</h2>
-<ul class="product-list">
-<li>[span_38](start_span)[span_38](end_span)Sécurité (Gilet jaune XL, Triangle de signalisation, Extincteur véhicule)[/cite]</li>
-<li>[span_39](start_span)[span_39](end_span)Outillage (Clé en croix renforcée, Clé télescopique, Barre de remorquage, Câbles de démarrage <16, <25, <35)[/cite]</li>
-<li>[span_40](start_span)[span_40](end_span)Jerricans homologués (5L X10, 10L X6, 20L X6) avec bec verseur[/cite]</li>
-<li>[span_41](start_span)[span_41](end_span)Pneumatique (Compresseur Osram OTI200, Kit réparation tubeless, Bouchons de valves)[/cite]</li>
-<li>[span_42](start_span)[span_42](end_span)Batteries Tech Power / Fiamm (Standard, Renforcée, Start/Stop)[/cite]</li>
-</ul>
-</section>
-
-<!-- Section Liquides -->
-<section id="liquides" class="category-card" aria-labelledby="cat-liquides">
-<h2 id="cat-liquides">[span_43](start_span)[span_43](end_span)[span_44](start_span)[span_44](end_span)Liquides &amp; Lubrifiants[/cite]</h2>
-<ul class="product-list">
-<li>[span_45](start_span)[span_45](end_span)AdBlue® Standard &amp; Total (Bidons 5L, 10L, Clearnox 10L avec bec verseur, livraison possible en fût)[/cite]</li>
-<li>[span_46](start_span)[span_46](end_span)Liquide de refroidissement (Jaune universel 2L/5L, Allemand G12 Rose -37°C 2L/5L)[/cite]</li>
-<li>[span_47](start_span)[span_47](end_span)Lave-glace sans méthanol (Été 2L/5L, Hiver 4 Saisons -15°C 2L/5L)[/cite]</li>
-<li>[span_48](start_span)[span_48](end_span)Lubrifiants automobiles (Marques Total, Castrol, Avia...)[/cite]</li>
-</ul>
-</section>
-
-<!-- Section Baie mécanique -->
-<section id="mecanique" class="category-card" aria-labelledby="cat-mecanique">
-<h2 id="cat-mecanique">[span_49](start_span)[span_49](end_span)[span_50](start_span)[span_50](end_span)Baie Mécanique &amp; Atelier[/cite]</h2>
-<ul class="product-list">
-<li>[span_51](start_span)[span_51](end_span)Dégraissant sec / nettoyant freins, dégraissant concentré multisurface[/cite]</li>
-<li>[span_52](start_span)[span_52](end_span)Plaques d'immatriculation Alu &amp; Plastique, rivets de couleur[/cite]</li>
-<li>[span_53](start_span)[span_53](end_span)Fournitures pneu (Valves TR414, Masses d'équilibrage adhésives, Mèches tubeless, Champignons, Crème de montage)[/cite]</li>
-<li>[span_54](start_span)[span_54](end_span)Absorbants atelier (Sacs végétal et minéral 40L)[/cite]</li>
-<li>[span_55](start_span)[span_55](end_span)Hygiène &amp; EPI (Savon mains granuleux, Gants latex/nitrile/chimique, Chaussures de sécurité, Papier essuie-mains)[/cite]</li>
-</ul>
-</section>
-
 </div>
 
-<div class="notice" role="note">
-<p><strong>Note :</strong>[span_56](start_span)[span_56](end_span)AFJ Diffusion ne fournit pas de pièces mécaniques détachées.[/cite][span_57](start_span)[span_57](end_span)[span_58](start_span)[span_58](end_span)[span_59](start_span)[span_59](end_span)[span_60](start_span)[span_60](end_span)D'autres références (poids lourd, moto, bateau) sont disponibles sur demande.[/cite]</p>
+<!-- 2. PRODUITS DE NETTOYAGE -->
+<div class="card">
+<h2>Produits de Nettoyage</h2>
+<ul>
+<li>Nettoyant / Rénovateur plastique parfumé x6 (Frais, Vanille, Fraise, Citron)</li>
+<li><strong>Gamme Néoclean (500ml) :</strong> Nettoyant soin plastique (satiné/brillant), Nettoyant vitre (pulvé & aérosol), Nettoyant tissus, Nettoyant insectes, Nettoyant moteur, Brillant pneu, Activ' Mousse aérosol, Destructeur d'odeurs, Cire carrosserie effet miroir, Crème rénovateur micro-rayures, Efface-rayures, Crème soin cuir, Nettoyant jantes (vernis, alu, chromé, indigo)</li>
+<li>Brillant plastique Lallanne</li>
+<li>Abel Nettoyant Tissus + brosse</li>
+<li>Abel Nettoyant goudron & résine</li>
+<li><strong>Gamme Redbull :</strong> Lingettes plastique intérieur, Spray intérieur/extérieur, Cire carrosserie, Shampoing extérieur, Brillant pneu</li>
+</ul>
 </div>
 
-</main>
+<!-- 3. ACCESSOIRES D'ENTRETIEN & LINGETTES -->
+<div class="card">
+<h2>Accessoires d'Entretien & Lingettes</h2>
+<h3>Lingettes Spéciales</h3>
+<ul>
+<li><strong>Wizzy / Imao :</strong> Tableau de bord (brillant/satiné), Vitres, Cuir, Mains, Multi-usages</li>
+<li><strong>Imao Parfumées :</strong> New York, Paris, Bali</li>
+<li>Sachet de lingettes à l’unité Carwash (Multi-usage / Vitre)</li>
+</ul>
 
-<footer role="contentinfo">
-<p>&copy; 2027 AFJ Diffusion. Tous droits réservés.</p>
+<h3>Accessoires</h3>
+<ul>
+<li>Microfibres multi-usages (Classique & XL) / Spécial vitre</li>
+<li>Lavette chamoisine x2 / Peau synthétique</li>
+<li>Peaux véritables chamoisées (Petite & Grande)</li>
+<li>Éponges marron / Raclette carrosserie</li>
+<li>Plumeau Nénénette / Plumeau chenille télescopique / Gant chenille</li>
+<li>Brosses : Tissus (poils & silicone), Jantes</li>
+<li><strong>Tapis (Lot de 4 : 2 avant / 2 arrière) :</strong> Tissus noir (liseret gris, bleu, rouge), PVC noir, PVC utilitaire avant</li>
+</ul>
+</div>
+
+<!-- 4. ACCESSOIRES MULTIPLES BOUTIQUE -->
+<div class="card">
+<h2>Accessoires Boutique & Équipements</h2>
+<h3>Signalétique & Sécurité</h3>
+<ul>
+<li>Disques A (Électrostatique / Magnétique)</li>
+<li>Conduite Accompagnée (Électrostatique / Magnétique)</li>
+<li>Bébé à bord (Électrostatique / Magnétique)</li>
+<li>Disque bleu de stationnement / Interdit de stationner</li>
+</ul>
+
+<h3>Entretien & Dépannage Rapide</h3>
+<ul>
+<li>DOT4 Liquide de frein / Start-Pilote / Graisse chaîne moto</li>
+<li><strong>FACOM :</strong> Dégrippant 400ml, Nettoyant injecteur (Diesel/Essence), Nettoyant FAP (1L), Nettoyant/Détartrant Radiateur, Anti-fuite calcaire radiateur, Anti-fuite huile moteur</li>
+<li>Bouchon de réservoir / Bouchons de valves x5</li>
+<li>Adhésifs : Gros Chatterton (noir/gris), Rubans PVC x2 (noir/rouge)</li>
+<li>Colle Glue x2 / Tendeurs x2 / Sangles à cliquet</li>
+<li>Gants : Manutention caoutchouc, Routier/Manutention cuir</li>
+<li>Feuilles OCB (Slim & Petite - Blanche/Marron) / Briquets Bic & fantaisie</li>
+</ul>
+</div>
+
+<!-- 5. ÉNERGIES & HIGH-TECH -->
+<div class="card">
+<h2>Énergies & High-Tech</h2>
+<h3>Accessoires Téléphonie & Auto</h3>
+<ul>
+<li>Supports téléphone (Pince, Ventouse, Magnétique, Grille d'aération)</li>
+<li>Allume-cigare USB / USB-C / Charge rapide</li>
+<li>Cordons de charge rapide (iOS, Micro-USB, Type-C)</li>
+</ul>
+
+<h3>Piles & Télécommandes (Blisters)</h3>
+<ul>
+<li>Piles bâtons : LR03, LR06, LR09, LR14, LR20 (Philips / Varta)</li>
+<li>Piles boutons (x2) : 1620, 2016, 2025, 2032, 2430, V23GA</li>
+</ul>
+
+<h3>Éclairage Ampoules (x10)</h3>
+<ul>
+<li>Ampoules H1, H3, H4, H7 (Philips)</li>
+<li>Ampoules signalisation : C5W, R5W, W5W, PY21W, P21W, P21/5W</li>
+<li>KITS Ampoules : H1, H1/H7, H4, H7</li>
+</ul>
+</div>
+
+<!-- 6. DÉPANNAGE & BATTERIES -->
+<div class="card">
+<h2>Dépannage & Matériel</h2>
+<ul>
+<li>Gilet jaune XL / Triangle de signalisation / Extincteur de secours</li>
+<li>Clé en croix renforcée / Clé télescopique démonte-pneu</li>
+<li>Barre de remorquage / Entonnoir avec filtre + rallonge</li>
+<li>Jerricans rouges avec bec verseur : 5L (x10), 10L (x6), 20L (x6)</li>
+<li>Compresseur allume-cigare OSRAM OTI200</li>
+<li>Kit réparation Tubeless / Kit fusibles et mini-fusibles (x10)</li>
+<li>Jeux de clés : Double, Étoile, Allen</li>
+<li>Câbles de démarrage (&lt;16, &lt;25, &lt;35)</li>
+</ul>
+
+<h3>Batteries (Standard, Renforcée, Start/Stop)</h3>
+<p class="note">Marques Tech Power & FIAMM (Gammes L1 à L5 / T-Haute / T-Basse)</p>
+</div>
+
+<!-- 7. LIQUIDES AUTOMOBILE -->
+<div class="card">
+<h2>Les Différents Liquides</h2>
+<ul>
+<li><strong>Lave-Glace Été :</strong> 2L (x12), 5L (x4)</li>
+<li><strong>Lave-Glace 4 Saisons (-15°C) :</strong> 2L (x12), 5L (x4) — <em>Sans méthanol</em></li>
+<li><strong>AdBlue Standard (avec bec verseur) :</strong> 5L (x4), 10L, 10L Anti-cristallisant</li>
+<li><strong>AdBlue Total / Clearnox :</strong> 5L Total (x2), 10L Total, 10L Clearnox</li>
+<li><strong>Liquide de Refroidissement Universel (Jaune) :</strong> 2L (x12), 5L (x4)</li>
+<li><strong>Liquide de Refroidissement Allemand G12 (Rose -37°C) :</strong> 2L (x12), 5L (x4)</li>
+</ul>
+<p class="note">💡 Possibilité de livraison en fût pour l'AdBlue et les liquides de refroidissement.</p>
+</div>
+
+<!-- 8. BAIE MÉCANIQUE ET ENTRETIEN -->
+<div class="card">
+<h2>Baie Mécanique & Consommables Ateliers</h2>
+<ul>
+<li>Dégraissant sec / Nettoyant freins</li>
+<li>Dégraissant concentré multi-surface (5L / 20L)</li>
+<li>Plaques d'immatriculation Alu (x10) / Plastique + Fond (x10)</li>
+<li>Rivets blanc/bleu/noir (x200) / Boulons avec joint de vidange</li>
+<li>Valves pneu (x100) / Masses d'équilibrage adhésives</li>
+<li>Crème de montage (5kg / 20kg)</li>
+<li>Mèches Tubeless (x60) / Champignons Tubeless (x24) + Colle</li>
+<li>Sacs absorbants Végétal (40L) & Minéral</li>
+<li>Papier essuie-mains mécanique (x6) / Papier toilette (x6)</li>
+<li>Crèmes & Savons mains granuleux</li>
+<li>Équipements (EPI) : Gants (Latex, Nitrile, Chimique), Chaussures de sécurité, Gilets</li>
+</ul>
+<p class="note" style="color: #ff0055; font-weight: bold; margin-top: 15px;">⚠️ Note : Nous ne faisons pas de pièces mécaniques.</p>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>&copy; 2027 AFJ Diffusion — Tous droits réservés.</p>
+<p>Pour toute information supplémentaire, nous sommes à votre entière écoute[span_3](start_span)[span_3](end_span).</p>
 </footer>
 
 </body>
