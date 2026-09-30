@@ -1,395 +1,173 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AFJ Diffusion - Catalogue Officiel</title>
-
 <style>
-
 :root {
-
 --primary: #1e3a8a;
-
 --secondary: #d97706;
-
 --bg: #f8fafc;
-
 --card-bg: #ffffff;
-
 --text: #1f2937;
-
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
-body { background-color: var(--bg); color: var(--text); padding-bottom: 60px; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; }
 
 header {
-
 background-color: var(--primary);
-
 color: white;
-
 padding: 20px;
-
 text-align: center;
-
-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
 }
 
 header h1 { margin-bottom: 5px; font-size: 1.8rem; }
-
-header p { font-size: 0.95rem; opacity: 0.9; }
+header p { font-size: 0.9rem; opacity: 0.9; margin-top: 4px; }
 
 .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
 
 .controls {
-
 display: flex;
-
-flex-wrap: wrap;
-
-gap: 10px;
-
+flex-direction: column;
+gap: 15px;
 margin-bottom: 25px;
-
-justify-content: space-between;
-
 }
 
 .search-bar {
-
-flex: 1;
-
-min-width: 250px;
-
+width: 100%;
 padding: 12px;
-
 border: 1px solid #cbd5e1;
-
 border-radius: 8px;
-
 font-size: 1rem;
-
 }
 
 .categories {
-
 display: flex;
-
 gap: 8px;
-
 overflow-x: auto;
-
 padding-bottom: 5px;
-
 }
 
 .btn-cat {
-
 background: #e2e8f0;
-
 border: none;
-
 padding: 10px 16px;
-
 border-radius: 20px;
-
 cursor: pointer;
-
 white-space: nowrap;
-
-font-weight: 600;
-
-transition: all 0.2s;
-
-}
-
-.btn-cat.active, .btn-cat:hover {
-
-background: var(--primary);
-
-color: white;
-
-}
-
-.grid {
-
-display: grid;
-
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-
-gap: 20px;
-
-}
-
-.card {
-
-background: var(--card-bg);
-
-border-radius: 10px;
-
-padding: 15px;
-
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-
-display: flex;
-
-flex-direction: column;
-
-justify-content: space-between;
-
-border: 1px solid #e2e8f0;
-
-}
-
-.card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
-
-.card p { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; }
-
-.card .tag {
-
-display: inline-block;
-
-background: #eff6ff;
-
-color: var(--primary);
-
-padding: 3px 8px;
-
-border-radius: 4px;
-
-font-size: 0.75rem;
-
 font-weight: bold;
-
-margin-bottom: 10px;
-
 }
 
-.card button {
-
-background-color: var(--secondary);
-
-color: white;
-
-border: none;
-
-padding: 10px;
-
-border-radius: 6px;
-
-cursor: pointer;
-
-font-weight: bold;
-
-width: 100%;
-
-}
-
-.cart-summary {
-
-position: fixed;
-
-bottom: 0;
-
-left: 0;
-
-right: 0;
-
-background: var(--primary);
-
-color: white;
-
-padding: 15px 20px;
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.1);
-
-}
-
+.btn-cat.active {
 .cart-summary button {
-
 background: var(--secondary);
-
 color: white;
-
 border: none;
-
 padding: 10px 20px;
-
 border-radius: 6px;
-
 cursor: pointer;
-
 font-weight: bold;
-
 }
-
 </style>
-
 </head>
-
 <body>
 
 <header>
-
 <h1>AFJ Diffusion</h1>
-
-<p>Grossiste d'accessoires & entretien automobile depuis 1994</p>
-
-<p>Contact : 06 49 89 22 49 / 06 08 25 05 59 | afj.diffusion01@gmail.com</p>
-
+<p>Grossiste d'accessoires & entretien automobile depuis 1994[span_0](start_span)[span_0](end_span)</p>
+<p>Contact : 06 49 89 22 49 / 06 08 25 05 59 | afj.diffusion01@gmail.com[span_1](start_span)[span_1](end_span)</p>
 </header>
 
 <div class="container">
-
 <div class="controls">
-
-<input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un produit, une marque..." onkeyup="filterProducts()">
-
-<div class="categories" id="categoryButtons">
-
-<button class="btn-cat active" onclick="filterCategory('all')">Tous</button>
-
-<button class="btn-cat" onclick="filterCategory('Parfums')">Parfums</button>
-
-<button class="btn-cat" onclick="filterCategory('Nettoyage')">Nettoyage</button>
-
-<button class="btn-cat" onclick="filterCategory('Accessoires')">Accessoires</button>
-
-<button class="btn-cat" onclick="filterCategory('Sécurité')">Sécurité & Dépannage</button>
-
-<button class="btn-cat" onclick="filterCategory('Atelier')">Atelier</button>
-
+<input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un produit, une marque..." oninput="filterProducts()">
+<div class="categories">
+<button class="btn-cat active" onclick="setCategory('all', this)">Tous</button>
+<button class="btn-cat" onclick="setCategory('Parfums', this)">Parfums</button>
+<button class="btn-cat" onclick="setCategory('Nettoyage', this)">Nettoyage</button>
+<button class="btn-cat" onclick="setCategory('Accessoires', this)">Accessoires</button>
+<button class="btn-cat" onclick="setCategory('Sécurité', this)">Sécurité</button>
+<button class="btn-cat" onclick="setCategory('Atelier', this)">Atelier</button>
 </div>
-
 </div>
 
 <div class="grid" id="productGrid"></div>
-
 </div>
 
 <div class="cart-summary">
-
-<div>Articles sélectionnés : <span id="cartCount">0</span></div>
-
-<button onclick="sendOrder()">Envoyer la commande par E-mail</button>
-
+<div>Articles sélectionnés : <strong id="cartCount">0</strong></div>
+<button onclick="sendOrder()">Envoyer le bon de commande</button>
 </div>
 
 <script>
-
-const products = [
-
-{ id: 1, name: "Arbre Magique / Clips / Diffuseurs", category: "Parfums", desc: "Gammes Alcante, Imao, California Scents, Coca-Cola, Pepsi" },
-
-{ id: 2, name: "Gamme Néoclean & Redbull", category: "Nettoyage", desc: "Nettoyants plastiques, vitres, jantes, moteurs, shampoings, efface-rayures" },
-
-{ id: 3, name: "Chiffons Microfibres & Peaux de Chamois", category: "Accessoires", desc: "Lingettes spécialisées, éponges, brosses et raclettes" },
-
-{ id: 4, name: "Ampoules & Piles", category: "Atelier", desc: "Ampoules H1, H4, H7... Piles boutons et bâtons" },
-
-{ id: 5, name: "Câbles, Chargeurs & Supports", category: "Accessoires", desc: "Connectique USB/Type-C et supports téléphone" },
-
-{ id: 6, name: "Kits Sécurité Automobile", category: "Sécurité", desc: "Gilets réfléchissants, triangles de signalisation, extincteurs" },
-
-{ id: 7, name: "Batteries & Câbles de démarrage", category: "Sécurité", desc: "Batteries Tech Power & Fiamm, jerricans, clés démonte-pneu" },
-
-{ id: 8, name: "Liquides de fonctionnement", category: "Atelier", desc: "Lave-glace, liquide de refroidissement (universel/G12), AdBlue" },
-
-{ id: 9, name: "Consommables d'Atelier", category: "Atelier", desc: "Dégraissants, nettoyants freins Facom, gants, absorbants" }
-
+var products = [
+{ id: 1, name: "Arbre Magique / Clips / Vapo", category: "Parfums", desc: "Gammes Alcante, Imao, California Scents, Coca-Cola, Pepsi[span_2](start_span)[span_2](end_span)" },
+{ id: 2, name: "Gamme Néoclean & Redbull", category: "Nettoyage", desc: "Nettoyants plastiques, vitres, jantes, moteurs, cires, shampoings[span_3](start_span)[span_3](end_span)" },
+{ id: 3, name: "Chiffons Microfibres & Chamois", category: "Accessoires", desc: "Lingettes spécialisées, peaux de chamois, éponges, raclettes[span_4](start_span)[span_4](end_span)" },
+{ id: 4, name: "Ampoules & Piles", category: "Atelier", desc: "Ampoules H1, H4, H7... Piles boutons et bâtons[span_5](start_span)[span_5](end_span)" },
+{ id: 5, name: "Câbles, Chargeurs & Supports", category: "Accessoires", desc: "Connectique USB/Type-C et supports téléphone[span_6](start_span)[span_6](end_span)" },
+{ id: 6, name: "Kits Sécurité Automobile", category: "Sécurité", desc: "Gilets réfléchissants, triangles, extincteurs[span_7](start_span)[span_7](end_span)" },
+{ id: 7, name: "Batteries & Dépannage", category: "Sécurité", desc: "Batteries Tech Power & Fiamm, jerricans, câbles[span_8](start_span)[span_8](end_span)" },
+{ id: 8, name: "Liquides de fonctionnement", category: "Atelier", desc: "Lave-glace, liquide de refroidissement (G12), AdBlue[span_9](start_span)[span_9](end_span)" },
+{ id: 9, name: "Consommables d'Atelier", category: "Atelier", desc: "Dégraissants, nettoyants freins Facom, gants, absorbants[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)" }
 ];
 
-let cart = [];
-
-let currentCategory = 'all';
+var cart = [];
+var currentCategory = 'all';
 
 function displayProducts(items) {
-
-const grid = document.getElementById('productGrid');
-
+var grid = document.getElementById('productGrid');
 grid.innerHTML = '';
-
-items.forEach(p => {
-
-grid.innerHTML += ⁠<div class="card"> <div> <span class="tag">${p.category}</span> <h3>${p.name}</h3> <p>${p.desc}</p> </div> <button onclick="addToCart('${p.name}')">+ Ajouter au bon</button> </div>⁠;
-
-});
-
+for (var i = 0; i < items.length; i++) {
+var p = items[i];
+var card = document.createElement('div');
+card.className = 'card';
+card.innerHTML = '<div>' +
+'<span class="tag">' + p.category + '</span>' +
+'<h3>' + p.name + '</h3>' +
+'<p>' + p.desc + '</p>' +
+'</div>' +
+'<button onclick="addToCart(\'' + p.name.replace(/'/g, "\\'") + '\')">+ Ajouter au bon</button>';
+grid.appendChild(card);
+}
 }
 
 function filterProducts() {
-
-const text = document.getElementById('searchInput').value.toLowerCase();
-
-const filtered = products.filter(p => {
-
-const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
-
-const matchesText = p.name.toLowerCase().includes(text) || p.desc.toLowerCase().includes(text);
-
+var text = document.getElementById('searchInput').value.toLowerCase();
+var filtered = products.filter(function(p) {
+var matchesCategory = (currentCategory === 'all') || (p.category === currentCategory);
+var matchesText = p.name.toLowerCase().indexOf(text) !== -1 || p.desc.toLowerCase().indexOf(text) !== -1;
 return matchesCategory && matchesText;
-
 });
-
 displayProducts(filtered);
-
 }
 
-function filterCategory(cat) {
-
+function setCategory(cat, btnElement) {
 currentCategory = cat;
-
-document.querySelectorAll('.btn-cat').forEach(btn => btn.classList.remove('active'));
-
-event.target.classList.add('active');
-
+var buttons = document.querySelectorAll('.btn-cat');
+buttons.forEach(function(b) { b.classList.remove('active'); });
+btnElement.classList.add('active');
 filterProducts();
-
 }
 
 function addToCart(productName) {
-
 cart.push(productName);
-
 document.getElementById('cartCount').innerText = cart.length;
-
 }
 
 function sendOrder() {
-
 if (cart.length === 0) {
-
-alert("Votre bon de commande est vide.");
-
+alert("Votre bon de commande est vide. Ajoutez des produits d'abord.");
 return;
-
+}
+var message = "Bonjour,\n\nJe souhaite passer commande pour les articles suivants :\n\n- " + cart.join("\n- ");
+window.location.href = "mailto:afj.diffusion01@gmail.com?subject=" + encodeURIComponent("Nouvelle Commande Catalogue AFJ") + "&body=" + encodeURIComponent(message);
 }
 
-const body = encodeURIComponent("Bonjour,\n\nJe souhaite passer commande pour les articles suivants :\n\n- " + cart.join("\n- "));
-
-window.location.href = ⁠mailto:afj.diffusion01@gmail.com?subject=Nouvelle Commande Catalogue&body=${body}⁠;
-
-}
-
+// Initialisation au chargement de la page
 displayProducts(products);
-
 </script>
-
 </body>
-
 </html>
