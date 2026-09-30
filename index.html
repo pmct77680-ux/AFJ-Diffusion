@@ -5,1207 +5,354 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AFJ Diffusion - Catalogue Officiel</title>
 <style>
-:root {
---primary: #1e3a8a;
---secondary: #d97706;
---bg: #f8fafc;
---card-bg: #ffffff;
---text: #1f2937;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; }
-
-header {
-background-color: var(--primary);
-color: white;
-padding: 20px;
-text-align: center;
-}
-
-header h1 { margin-bottom: 5px; font-size: 1.8rem; }
-header p { font-size: 0.9rem; opacity: 0.9; margin-top: 4px; }
-
-.container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-
-.controls {
-display: flex;
-flex-direction: column;
-gap: 15px;
-margin-bottom: 25px;
-}
-
-.search-bar {
-width: 100%;
-padding: 12px;
-border: 1px solid #cbd5e1;
-border-radius: 8px;
-font-size: 1rem;
-}
-
-.categories {
-display: flex;
-gap: 8px;
-overflow-x: auto;
-padding-bottom: 5px;
-}
-
-.btn-cat {
-background: #e2e8f0;
-border: none;
-padding: 10px 16px;
-border-radius: 20px;
-cursor: pointer;
-white-space: nowrap;
-font-weight: bold;
-}
-
-.btn-cat.active {
-background: var(--primary);
-color: white;
-}
-
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-gap: 20px;
-}
-
-.card {
-background: var(--card-bg);
-border-radius: 10px;
-padding: 15px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-border: 1px solid #e2e8f0;
-}
-
-.card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
-.card p { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; }
-.card .tag {
-display: inline-block;
-background: #eff6ff;
-color: var(--primary);
-padding: 3px 8px;
-border-radius: 4px;
-font-size: 0.75rem;
-font-weight: bold;
-margin-bottom: 10px;
-}
-
-.card button {
-background-color: var(--secondary);
-color: white;
-border: none;
-padding: 10px;
-border-radius: 6px;
-cursor: pointer;
-font-weight: bold;
-width: 100%;
-}
-
-.cart-summary {
-position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
-background: var(--primary);
-color: white;
-padding: 15px 20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-.cart-summary button {
-background: var(--secondary);
-color: white;
-border: none;
-padding: 10px 20px;
-border-radius: 6px;
-cursor: pointer;
-font-weight: bold;
-}
-</style>
-</head>
-<body>
-
-<header>
-<h1>AFJ Diffusion</h1>
-<p>Grossiste d'accessoires & entretien automobile depuis 1994</p>
-<p>Contact : 06 49 89 22 49 / 06 08 25 05 59 | afj.diffusion01@gmail.com</p>
-</header>
-
-<div class="container">
-<div class="controls">
-<input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un produit, une marque..." oninput="filterProducts()">
-<div class="categories">
-<button class="btn-cat active" onclick="setCategory('all', this)">Tous</button>
-<button class="btn-cat" onclick="setCategory('Parfums', this)">Parfums</button>
-<button class="btn-cat" onclick="setCategory('Nettoyage', this)">Nettoyage</button>
-<button class="btn-cat" onclick="setCategory('Accessoires', this)">Accessoires</button>
-<button class="btn-cat" onclick="setCategory('Sécurité', this)">Sécurité</button>
-<button class="btn-cat" onclick="setCategory('Atelier', this)">Atelier</button>
-</div>
-</div>
-
-<div class="grid" id="productGrid"></div>
-</div>
-
-<div class="cart-summary">
-<div>Articles sélectionnés : <strong id="cartCount">0</strong></div>
-<button onclick="sendOrder()">Envoyer le bon de commande</button>
-</div>
-
-<script>
-var products = [
-{ id: 1, name: "Arbre Magique / Clips / Vapo", category: "Parfums", desc: "Gammes Alcante, Imao, California Scents, Coca-Cola, Pepsi" },
-{ id: 2, name: "Gamme Néoclean & Redbull", category: "Nettoyage", desc: "Nettoyants plastiques, vitres, jantes, moteurs, cires, shampoings" },
-{ id: 3, name: "Chiffons Microfibres & Chamois", category: "Accessoires", desc: "Lingettes spécialisées, peaux de chamois, éponges, raclettes" },
-{ id: 4, name: "Ampoules & Piles", category: "Atelier", desc: "Ampoules H1, H4, H7... Piles boutons et bâtons" },
-{ id: 5, name: "Câbles, Chargeurs & Supports", category: "Accessoires", desc: "Connectique USB/Type-C et supports téléphone" },
-{ id: 6, name: "Kits Sécurité Automobile", category: "Sécurité", desc: "Gilets réfléchissants, triangles, extincteurs" },
-{ id: 7, name: "Batteries & Dépannage", category: "Sécurité", desc: "Batteries Tech Power & Fiamm, jerricans, câbles" },
-{ id: 8, name: "Liquides de fonctionnement", category: "Atelier", desc: "Lave-glace, liquide de refroidissement (G12), AdBlue" },
-{ id: 9, name: "Consommables d'Atelier", category: "Atelier", desc: "Dégraissants, nettoyants freins Facom, gants, absorbants" }
-];
-
-var cart = [];
-var currentCategory = 'all';
-
-function displayProducts(items) {
-var grid = document.getElementById('productGrid');
-grid.innerHTML = '';
-for (var i = 0; i < items.length; i++) {
-var p = items[i];
-var card = document.createElement('div');
-card.className = 'card';
-card.innerHTML = '<div>' +
-'<span class="tag">' + p.category + '</span>' +
-'<h3>' + p.name + '</h3>' +
-'<p>' + p.desc + '</p>' +
-'</div>' +
-'<button onclick="addToCart(\'' + p.name.replace(/'/g, "\\'") + '\')">+ Ajouter au bon</button>';
-grid.appendChild(card);
-}
-}
-
-function filterProducts() {
-var text = document.getElementById('searchInput').value.toLowerCase();
-var filtered = products.filter(function(p) {
-var matchesCategory = (currentCategory === 'all') || (p.category === currentCategory);
-var matchesText = p.name.toLowerCase().indexOf(text) !== -1 || p.desc.toLowerCase().indexOf(text) !== -1;
-return matchesCategory && matchesText;
-});
-displayProducts(filtered);
-}
-
-function setCategory(cat, btnElement) {
-currentCategory = cat;
-var buttons = document.querySelectorAll('.btn-cat');
-buttons.forEach(function(b) { b.classList.remove('active'); });
-btnElement.classList.add('active');
-filterProducts();
-}
-
-function addToCart(productName) {
-cart.push(productName);
-document.getElementById('cartCount').innerText = cart.length;
-}
-
-function sendOrder() {
-if (cart.length === 0) {
-alert("Votre bon de commande est vide. Ajoutez des produits d'abord.");
-return;
-}
-var message = "Bonjour,\n\nJe souhaite passer commande pour les articles suivants :\n\n- " + cart.join("\n- ");
-window.location.href = "mailto:afj.diffusion01@gmail.com?subject=" + encodeURIComponent("Nouvelle Commande Catalogue AFJ") + "&body=" + encodeURIComponent(message);
-}
-
-displayProducts(products);
-</script>
-</body>
-</html>
-
-
-Le mer. 30 sept. 2026 à 19:02, Pierre Nakache <pmct77680@gmail.com> a écrit :
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AFJ Diffusion - Catalogue Officiel</title>
-<style>
-:root {
---primary: #1e3a8a;
---secondary: #d97706;
---bg: #f8fafc;
---card-bg: #ffffff;
---text: #1f2937;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; }
-
-header {
-background-color: var(--primary);
-color: white;
-padding: 20px;
-text-align: center;
-}
-
-header h1 { margin-bottom: 5px; font-size: 1.8rem; }
-header p { font-size: 0.9rem; opacity: 0.9; margin-top: 4px; }
-
-.container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-
-.controls {
-display: flex;
-flex-direction: column;
-gap: 15px;
-margin-bottom: 25px;
-}
-
-.search-bar {
-width: 100%;
-padding: 12px;
-border: 1px solid #cbd5e1;
-border-radius: 8px;
-font-size: 1rem;
-}
-
-.categories {
-display: flex;
-gap: 8px;
-overflow-x: auto;
-padding-bottom: 5px;
-}
-
-.btn-cat {
-background: #e2e8f0;
-border: none;
-padding: 10px 16px;
-border-radius: 20px;
-cursor: pointer;
-white-space: nowrap;
-font-weight: bold;
-}
-
-.btn-cat.active {
-background: var(--primary);
-color: white;
-}
-
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-gap: 20px;
-}
-
-.card {
-background: var(--card-bg);
-border-radius: 10px;
-padding: 15px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-border: 1px solid #e2e8f0;
-}
-
-.card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
-.card p { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; }
-.card .tag {
-display: inline-block;
-background: #eff6ff;
-color: var(--primary);
-padding: 3px 8px;
-border-radius: 4px;
-font-size: 0.75rem;
-font-weight: bold;
-margin-bottom: 10px;
-}
-
-.card button {
-background-color: var(--secondary);
-color: white;
-border: none;
-padding: 10px;
-border-radius: 6px;
-cursor: pointer;
-font-weight: bold;
-width: 100%;
-}
-
-.cart-summary {
-position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
-background: var(--primary);
-color: white;
-padding: 15px 20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-.cart-summary button {
-background: var(--secondary);
-color: white;
-border: none;
-padding: 10px 20px;
-border-radius: 6px;
-cursor: pointer;
-font-weight: bold;
-}
-</style>
-</head>
-<body>
-
-<header>
-<h1>AFJ Diffusion</h1>
-<p>Grossiste d'accessoires & entretien automobile depuis 1994[span_0](start_span)[span_0](end_span)</p>
-<p>Contact : 06 49 89 22 49 / 06 08 25 05 59 | afj.diffusion01@gmail.com[span_1](start_span)[span_1](end_span)</p>
-</header>
-
-<div class="container">
-<div class="controls">
-<input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un produit, une marque..." oninput="filterProducts()">
-<div class="categories">
-<button class="btn-cat active" onclick="setCategory('all', this)">Tous</button>
-<button class="btn-cat" onclick="setCategory('Parfums', this)">Parfums</button>
-<button class="btn-cat" onclick="setCategory('Nettoyage', this)">Nettoyage</button>
-<button class="btn-cat" onclick="setCategory('Accessoires', this)">Accessoires</button>
-<button class="btn-cat" onclick="setCategory('Sécurité', this)">Sécurité</button>
-<button class="btn-cat" onclick="setCategory('Atelier', this)">Atelier</button>
-</div>
-</div>
-
-<div class="grid" id="productGrid"></div>
-</div>
-
-<div class="cart-summary">
-<div>Articles sélectionnés : <strong id="cartCount">0</strong></div>
-<button onclick="sendOrder()">Envoyer le bon de commande</button>
-</div>
-
-<script>
-var products = [
-{ id: 1, name: "Arbre Magique / Clips / Vapo", category: "Parfums", desc: "Gammes Alcante, Imao, California Scents, Coca-Cola, Pepsi[span_2](start_span)[span_2](end_span)" },
-{ id: 2, name: "Gamme Néoclean & Redbull", category: "Nettoyage", desc: "Nettoyants plastiques, vitres, jantes, moteurs, cires, shampoings[span_3](start_span)[span_3](end_span)" },
-{ id: 3, name: "Chiffons Microfibres & Chamois", category: "Accessoires", desc: "Lingettes spécialisées, peaux de chamois, éponges, raclettes[span_4](start_span)[span_4](end_span)" },
-{ id: 4, name: "Ampoules & Piles", category: "Atelier", desc: "Ampoules H1, H4, H7... Piles boutons et bâtons[span_5](start_span)[span_5](end_span)" },
-{ id: 5, name: "Câbles, Chargeurs & Supports", category: "Accessoires", desc: "Connectique USB/Type-C et supports téléphone[span_6](start_span)[span_6](end_span)" },
-{ id: 6, name: "Kits Sécurité Automobile", category: "Sécurité", desc: "Gilets réfléchissants, triangles, extincteurs[span_7](start_span)[span_7](end_span)" },
-{ id: 7, name: "Batteries & Dépannage", category: "Sécurité", desc: "Batteries Tech Power & Fiamm, jerricans, câbles[span_8](start_span)[span_8](end_span)" },
-{ id: 8, name: "Liquides de fonctionnement", category: "Atelier", desc: "Lave-glace, liquide de refroidissement (G12), AdBlue[span_9](start_span)[span_9](end_span)" },
-{ id: 9, name: "Consommables d'Atelier", category: "Atelier", desc: "Dégraissants, nettoyants freins Facom, gants, absorbants[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)" }
-];
-
-var cart = [];
-var currentCategory = 'all';
-
-function displayProducts(items) {
-var grid = document.getElementById('productGrid');
-grid.innerHTML = '';
-for (var i = 0; i < items.length; i++) {
-var p = items[i];
-var card = document.createElement('div');
-card.className = 'card';
-card.innerHTML = '<div>' +
-'<span class="tag">' + p.category + '</span>' +
-'<h3>' + p.name + '</h3>' +
-'<p>' + p.desc + '</p>' +
-'</div>' +
-'<button onclick="addToCart(\'' + p.name.replace(/'/g, "\\'") + '\')">+ Ajouter au bon</button>';
-grid.appendChild(card);
-}
-}
-
-function filterProducts() {
-var text = document.getElementById('searchInput').value.toLowerCase();
-var filtered = products.filter(function(p) {
-var matchesCategory = (currentCategory === 'all') || (p.category === currentCategory);
-var matchesText = p.name.toLowerCase().indexOf(text) !== -1 || p.desc.toLowerCase().indexOf(text) !== -1;
-return matchesCategory && matchesText;
-});
-displayProducts(filtered);
-}
-
-function setCategory(cat, btnElement) {
-currentCategory = cat;
-var buttons = document.querySelectorAll('.btn-cat');
-buttons.forEach(function(b) { b.classList.remove('active'); });
-btnElement.classList.add('active');
-filterProducts();
-}
-
-function addToCart(productName) {
-cart.push(productName);
-document.getElementById('cartCount').innerText = cart.length;
-}
-
-function sendOrder() {
-if (cart.length === 0) {
-alert("Votre bon de commande est vide. Ajoutez des produits d'abord.");
-return;
-}
-var message = "Bonjour,\n\nJe souhaite passer commande pour les articles suivants :\n\n- " + cart.join("\n- ");
-window.location.href = "mailto:afj.diffusion01@gmail.com?subject=" + encodeURIComponent("Nouvelle Commande Catalogue AFJ") + "&body=" + encodeURIComponent(message);
-}
-
-// Initialisation au chargement de la page
-displayProducts(products);
-</script>
-</body>
-</html>
-
-
-Le mer. 30 sept. 2026 à 18:58, Pierre Nakache <pmct77680@gmail.com> a écrit :
-<!DOCTYPE html>
-
-<html lang="fr">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AFJ Diffusion - Catalogue Officiel</title>
-
-<style>
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap');
 
 :root {
-
---primary: #1e3a8a;
-
---secondary: #d97706;
-
---bg: #f8fafc;
-
---card-bg: #ffffff;
-
---text: #1f2937;
-
+--border-black: #000000;
+--bg-gray: #f2f2f2;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Roboto', sans-serif; background-color: #ffffff; color: #000; padding: 20px 10px; }
 
-body { background-color: var(--bg); color: var(--text); padding-bottom: 60px; }
-
-header {
-
-background-color: var(--primary);
-
-color: white;
-
-padding: 20px;
-
-text-align: center;
-
-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
-}
-
-header h1 { margin-bottom: 5px; font-size: 1.8rem; }
-
-header p { font-size: 0.95rem; opacity: 0.9; }
-
-.container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-
-.controls {
-
-display: flex;
-
-flex-wrap: wrap;
-
-gap: 10px;
-
-margin-bottom: 25px;
-
-justify-content: space-between;
-
-}
-
-.search-bar {
-
-flex: 1;
-
-min-width: 250px;
-
-padding: 12px;
-
-border: 1px solid #cbd5e1;
-
-border-radius: 8px;
-
-font-size: 1rem;
-
-}
-
-.categories {
-
-display: flex;
-
-gap: 8px;
-
-overflow-x: auto;
-
-padding-bottom: 5px;
-
-}
-
-.btn-cat {
-
-background: #e2e8f0;
-
-border: none;
-
-padding: 10px 16px;
-
-border-radius: 20px;
-
-cursor: pointer;
-
-white-space: nowrap;
-
-font-weight: 600;
-
-transition: all 0.2s;
-
-}
-
-.btn-cat.active, .btn-cat:hover {
-
-background: var(--primary);
-
-color: white;
-
-}
-
-.grid {
-
-display: grid;
-
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-
-gap: 20px;
-
-}
-
-.card {
-
-background: var(--card-bg);
-
-border-radius: 10px;
-
+.page {
+max-width: 900px;
+margin: 0 auto 40px auto;
+background: #fff;
 padding: 15px;
-
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-
-display: flex;
-
-flex-direction: column;
-
-justify-content: space-between;
-
-border: 1px solid #e2e8f0;
-
 }
 
-.card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
-
-.card p { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; }
-
-.card .tag {
-
-display: inline-block;
-
-background: #eff6ff;
-
-color: var(--primary);
-
-padding: 3px 8px;
-
+/* Titres encadrés style feutre/dessin */
+.title-box {
+border: 3px solid var(--border-black);
 border-radius: 4px;
-
-font-size: 0.75rem;
-
-font-weight: bold;
-
-margin-bottom: 10px;
-
-}
-
-.card button {
-
-background-color: var(--secondary);
-
-color: white;
-
-border: none;
-
 padding: 10px;
-
-border-radius: 6px;
-
-cursor: pointer;
-
-font-weight: bold;
-
-width: 100%;
-
-}
-
-.cart-summary {
-
-position: fixed;
-
-bottom: 0;
-
-left: 0;
-
-right: 0;
-
-background: var(--primary);
-
-color: white;
-
-padding: 15px 20px;
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.1);
-
-}
-
-.cart-summary button {
-
-background: var(--secondary);
-
-color: white;
-
-border: none;
-
-padding: 10px 20px;
-
-border-radius: 6px;
-
-cursor: pointer;
-
-font-weight: bold;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<h1>AFJ Diffusion</h1>
-
-<p>Grossiste d'accessoires & entretien automobile depuis 1994</p>
-
-<p>Contact : 06 49 89 22 49 / 06 08 25 05 59 | afj.diffusion01@gmail.com</p>
-
-</header>
-
-<div class="container">
-
-<div class="controls">
-
-<input type="text" id="searchInput" class="search-bar" placeholder="Rechercher un produit, une marque..." onkeyup="filterProducts()">
-
-<div class="categories" id="categoryButtons">
-
-<button class="btn-cat active" onclick="filterCategory('all')">Tous</button>
-
-<button class="btn-cat" onclick="filterCategory('Parfums')">Parfums</button>
-
-<button class="btn-cat" onclick="filterCategory('Nettoyage')">Nettoyage</button>
-
-<button class="btn-cat" onclick="filterCategory('Accessoires')">Accessoires</button>
-
-<button class="btn-cat" onclick="filterCategory('Sécurité')">Sécurité & Dépannage</button>
-
-<button class="btn-cat" onclick="filterCategory('Atelier')">Atelier</button>
-
-</div>
-
-</div>
-
-<div class="grid" id="productGrid"></div>
-
-</div>
-
-<div class="cart-summary">
-
-<div>Articles sélectionnés : <span id="cartCount">0</span></div>
-
-<button onclick="sendOrder()">Envoyer la commande par E-mail</button>
-
-</div>
-
-<script>
-
-const products = [
-
-{ id: 1, name: "Arbre Magique / Clips / Diffuseurs", category: "Parfums", desc: "Gammes Alcante, Imao, California Scents, Coca-Cola, Pepsi" },
-
-{ id: 2, name: "Gamme Néoclean & Redbull", category: "Nettoyage", desc: "Nettoyants plastiques, vitres, jantes, moteurs, shampoings, efface-rayures" },
-
-{ id: 3, name: "Chiffons Microfibres & Peaux de Chamois", category: "Accessoires", desc: "Lingettes spécialisées, éponges, brosses et raclettes" },
-
-{ id: 4, name: "Ampoules & Piles", category: "Atelier", desc: "Ampoules H1, H4, H7... Piles boutons et bâtons" },
-
-{ id: 5, name: "Câbles, Chargeurs & Supports", category: "Accessoires", desc: "Connectique USB/Type-C et supports téléphone" },
-
-{ id: 6, name: "Kits Sécurité Automobile", category: "Sécurité", desc: "Gilets réfléchissants, triangles de signalisation, extincteurs" },
-
-{ id: 7, name: "Batteries & Câbles de démarrage", category: "Sécurité", desc: "Batteries Tech Power & Fiamm, jerricans, clés démonte-pneu" },
-
-{ id: 8, name: "Liquides de fonctionnement", category: "Atelier", desc: "Lave-glace, liquide de refroidissement (universel/G12), AdBlue" },
-
-{ id: 9, name: "Consommables d'Atelier", category: "Atelier", desc: "Dégraissants, nettoyants freins Facom, gants, absorbants" }
-
-];
-
-let cart = [];
-
-let currentCategory = 'all';
-
-function displayProducts(items) {
-
-const grid = document.getElementById('productGrid');
-
-grid.innerHTML = '';
-
-items.forEach(p => {
-
-grid.innerHTML += ⁠<div class="card"> <div> <span class="tag">${p.category}</span> <h3>${p.name}</h3> <p>${p.desc}</p> </div> <button onclick="addToCart('${p.name}')">+ Ajouter au bon</button> </div>⁠;
-
-});
-
-}
-
-function filterProducts() {
-
-const text = document.getElementById('searchInput').value.toLowerCase();
-
-const filtered = products.filter(p => {
-
-const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
-
-const matchesText = p.name.toLowerCase().includes(text) || p.desc.toLowerCase().includes(text);
-
-return matchesCategory && matchesText;
-
-});
-
-displayProducts(filtered);
-
-}
-
-function filterCategory(cat) {
-
-currentCategory = cat;
-
-document.querySelectorAll('.btn-cat').forEach(btn => btn.classList.remove('active'));
-
-event.target.classList.add('active');
-
-filterProducts();
-
-}
-
-function addToCart(productName) {
-
-cart.push(productName);
-
-document.getElementById('cartCount').innerText = cart.length;
-
-}
-
-function sendOrder() {
-
-if (cart.length === 0) {
-
-alert("Votre bon de commande est vide.");
-
-return;
-
-}
-
-const body = encodeURIComponent("Bonjour,\n\nJe souhaite passer commande pour les articles suivants :\n\n- " + cart.join("\n- "));
-
-window.location.href = ⁠mailto:afj.diffusion01@gmail.com?subject=Nouvelle Commande Catalogue&body=${body}⁠;
-
-}
-
-displayProducts(products);
-
-</script>
-
-</body>
-
-</html>
-
-
-
-Le mer. 30 sept. 2026 à 18:45, Pierre Nakache <pmct77680@gmail.com> a écrit :
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AFJ Diffusion - Catalogue 2027</title>
-<style>
-/* RESET & BASE STYLES */
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-}
-body {
-font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-background-color: #0f1115;
-color: #e1e1e1;
-line-height: 1.6;
-}
-a {
-color: #ff0055;
-text-decoration: none;
-}
-
-/* HEADER / HERO SECTION */
-header {
-background: linear-gradient(135deg, #050505 0%, #1a1c23 100%);
-border-bottom: 3px solid #ff0055;
-padding: 40px 20px;
 text-align: center;
+margin-bottom: 20px;
+background: #fff;
 }
-.logo-title {
-font-size: 3rem;
-font-weight: 800;
-letter-spacing: 2px;
-color: #fff;
-text-shadow: 0 0 10px rgba(255, 0, 85, 0.6), 0 0 20px rgba(0, 225, 255, 0.4);
-margin-bottom: 10px;
-}
-.subtitle {
-font-size: 1.2rem;
-color: #00e1ff;
+
+.title-box h1 {
+font-family: 'Permanent Marker', cursive, sans-serif;
+font-size: 26px;
+letter-spacing: 1px;
 text-transform: uppercase;
-letter-spacing: 1.5px;
+}
+
+.title-box h2 {
+font-family: 'Permanent Marker', cursive, sans-serif;
+font-size: 20px;
+text-transform: uppercase;
+}
+
+/* En-tête AFJ */
+.header-content {
+text-align: center;
 margin-bottom: 20px;
 }
-.about-card {
-max-width: 800px;
-margin: 0 auto;
-background: rgba(255, 255, 255, 0.05);
-border: 1px solid rgba(255, 255, 255, 0.1);
-border-radius: 8px;
-padding: 20px;
+
+.logo-img {
+max-width: 280px;
+height: auto;
+margin: 10px auto;
+display: block;
+}
+
+.intro-text {
+font-size: 13px;
+line-height: 1.5;
+margin: 15px 0;
+}
+
+.contact-bubbles {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: 10px;
+margin-top: 15px;
+}
+
+.bubble {
+border: 2px solid #000;
+border-radius: 25px;
+padding: 8px 18px;
+font-weight: bold;
+font-size: 13px;
+background: #fff;
+text-align: center;
+}
+
+/* Sections / Grilles */
+.section { margin-bottom: 35px; }
+
+.grid-2col {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+align-items: start;
+}
+
+@media (max-width: 768px) {
+.grid-2col { grid-template-columns: 1fr; }
+}
+
+.doc-img {
+width: 100%;
+height: auto;
+border: 1px solid #ddd;
+border-radius: 4px;
+object-fit: contain;
+}
+
+/* Tableaux */
+table {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 10px;
+font-size: 12px;
+}
+
+th, td {
+border: 1px solid #ccc;
+padding: 5px 8px;
 text-align: left;
 }
-.contact-info {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-margin-top: 20px;
-padding-top: 15px;
-border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+tr:nth-child(even) { background-color: var(--bg-gray); }
+
+.table-title {
 font-weight: bold;
-}
-.contact-info div {
-margin: 5px 10px;
-}
-
-/* CONTAINER & LAYOUT */
-.container {
-max-width: 1200px;
-margin: 30px auto;
-padding: 0 20px;
-}
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-gap: 25px;
-}
-
-/* CARDS & SECTIONS */
-.card {
-background: #161920;
-border: 1px solid #282c37;
-border-radius: 10px;
-padding: 25px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.card:hover {
-transform: translateY(-3px);
-border-color: #00e1ff;
-}
-.card h2 {
-font-size: 1.4rem;
-color: #00e1ff;
-border-bottom: 2px solid #ff0055;
-padding-bottom: 8px;
-margin-bottom: 15px;
 text-transform: uppercase;
+margin: 10px 0 5px 0;
+font-size: 13px;
 }
-.card h3 {
-font-size: 1.1rem;
-color: #ff0055;
-margin: 15px 0 8px 0;
-}
-.card ul {
-list-style-type: none;
-padding-left: 0;
-}
-.card ul li {
-padding: 5px 0;
-border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-position: relative;
-padding-left: 18px;
-}
-.card ul li::before {
-content: "•";
-color: #ff0055;
+
+.text-red { color: #d00; font-weight: bold; }
+
+/* Bulles de remarque en bas de page */
+.note-bubble {
+border: 2px solid #000;
+border-radius: 20px;
+padding: 6px 15px;
+font-size: 12px;
 font-weight: bold;
-position: absolute;
-left: 0;
-}
-
-/* SPECIAL HIGHLIGHTS */
-.badge {
-background: #ff0055;
-color: white;
-font-size: 0.8rem;
-padding: 2px 6px;
-border-radius: 4px;
-margin-left: 5px;
-}
-.note {
-font-size: 0.9rem;
-font-style: italic;
-color: #a0a0a0;
+display: inline-block;
 margin-top: 10px;
-}
-
-/* FOOTER */
-footer {
-text-align: center;
-padding: 30px;
-background: #08090c;
-border-top: 1px solid #1a1c23;
-margin-top: 50px;
-color: #7a7a7a;
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER / PRESENTATION -->
-<header>
-<div class="logo-title">AFJ DIFFUSION</div>
-<div class="subtitle">Accessoiristes Automobiles — Semi-Grossiste</div>
+<div class="page">
 
-<div class="about-card">
-<p><strong>AFJ Diffusion</strong> est une petite entreprise familiale créée en 1994, opérant en tant que semi-grossiste dans la vente d’accessoires automobiles[span_1](start_span)[span_1](end_span). Localisés principalement en région Île-de-France et ses alentours, nous travaillons avec les stations-services, lavages et garages mécaniques[span_2](start_span)[span_2](end_span).</p>
-
-<div class="contact-info">
-<div>📞 Vincent : 06 49 89 22 49</div>
-<div>📞 René : 06 08 25 05 59</div>
-<div>✉️ afj.diffusion01@gmail.com</div>
-</div>
-</div>
-</header>
-
-<!-- CATALOGUE CONTENT -->
-<div class="container">
-<div class="grid">
-
-<!-- 1. PARFUMS ET DÉSODORISANTS -->
-<div class="card">
-<h2>Parfums & Désodorisants</h2>
-<ul>
-<li><strong>Arbre Magique :</strong> X24</li>
-<li><strong>Clips :</strong> X4</li>
-<li><strong>Bottle :</strong> X5</li>
-<li><strong>Cannette Sapins :</strong> X6</li>
-<li><strong>Wrap Aérateur :</strong> X5</li>
-</ul>
-
-<h3>Parfums disponibles</h3>
-<p class="note">Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme Citron, Cerise, Midnight Chic, Pina Colada, Mai Thaï, City Style, Jungle, Rose-Thorn, Super-Nova, Lavande, Beach-Day, Relax, Cocktail Fruit...</p>
-
-<h3>Gammes Spéciales</h3>
-<ul>
-<li><strong>Parfums Vapo Alcantes :</strong> Présentoir X32 / Recharge X6</li>
-<li><strong>Présentoir Coca :</strong> Coca, Vanille Cherry</li>
-<li><strong>Présentoir California :</strong> Cerise, Vanille ou Mixte</li>
-<li><strong>Plaquettes papier parfumés :</strong> Día de los Muertos</li>
-<li><strong>Bouteille Coca 3D :</strong> Coca, Vanille, Cherry</li>
-<li><strong>Gamme Fanta & Pepsi :</strong> Canette Pepsi, Présentoir Pepsi, Présentoir Fanta (Grape, Orange, Strawberry), Plaquettes (Fanta, Coca, Pepsi)</li>
-<li><strong>Aroma Diffuseur Aérateur :</strong> Black, Cotton, Bubble, Vanille, Cherry</li>
-<li><strong>Gamme GEO :</strong> Geo Cat, Geo Dog, Geo Dot, Geo Loop</li>
-<li><strong>Made in France — Imao :</strong> Plaquettes Imao (x10), Plaquettes Édition Sport, Vaporisateur/Spray (x10), Imao grille Aérateur (x5)</li>
-</ul>
+<!-- EN-TÊTE / PAGE 1 -->
+<div class="title-box">
+<h1>ACCESSOIRISTES AUTOMOBILES</h1>
 </div>
 
-<!-- 2. PRODUITS DE NETTOYAGE -->
-<div class="card">
-<h2>Produits de Nettoyage</h2>
-<ul>
-<li>Nettoyant / Rénovateur plastique parfumé x6 (Frais, Vanille, Fraise, Citron)</li>
-<li><strong>Gamme Néoclean (500ml) :</strong> Nettoyant soin plastique (satiné/brillant), Nettoyant vitre (pulvé & aérosol), Nettoyant tissus, Nettoyant insectes, Nettoyant moteur, Brillant pneu, Activ' Mousse aérosol, Destructeur d'odeurs, Cire carrosserie effet miroir, Crème rénovateur micro-rayures, Efface-rayures, Crème soin cuir, Nettoyant jantes (vernis, alu, chromé, indigo)</li>
-<li>Brillant plastique Lallanne</li>
-<li>Abel Nettoyant Tissus + brosse</li>
-<li>Abel Nettoyant goudron & résine</li>
-<li><strong>Gamme Redbull :</strong> Lingettes plastique intérieur, Spray intérieur/extérieur, Cire carrosserie, Shampoing extérieur, Brillant pneu</li>
-</ul>
+<div class="header-content">
+<img src="https://i.ibb.co/3ykG8mP/afj-logo.png" alt="AFJ Diffusion" class="logo-img" onerror="this.style.display='none'">
+
+<div class="intro-text">
+<p><strong>AFJ Diffusion</strong> est une petite entreprise familiale créée en 1994[span_0](start_span)[span_0](end_span).</p>
+<p>Qui opère en tant que semi-grossiste dans la vente d'accessoires automobiles[span_1](start_span)[span_1](end_span).</p>
+<p>Localisée principalement dans la région Île-de-France et ses alentours[span_2](start_span)[span_2](end_span).</p>
+<br>
+<p>Nous travaillons avec les <strong>stations services, lavages et garages mécaniques</strong>[span_3](start_span)[span_3](end_span).</p>
+<br>
+<p><strong>Spécialisé dans :</strong></p>
+<p>• Diffuseurs et parfums d'intérieur[span_4](start_span)[span_4](end_span)</p>
+<p>• Produits de nettoyage et ses accessoires d'entretiens[span_5](start_span)[span_5](end_span)</p>
+<p>• Accessoires automobile, énergies et ses dépannages[span_6](start_span)[span_6](end_span)</p>
+<p>• Les différents liquides[span_7](start_span)[span_7](end_span)</p>
+<p>• Baie petite mécanique[span_8](start_span)[span_8](end_span)</p>
+<p>• Lubrifiants automobile (Total, Castrol, Avia...)[span_9](start_span)[span_9](end_span)</p>
 </div>
 
-<!-- 3. ACCESSOIRES D'ENTRETIEN & LINGETTES -->
-<div class="card">
-<h2>Accessoires d'Entretien & Lingettes</h2>
-<h3>Lingettes Spéciales</h3>
-<ul>
-<li><strong>Wizzy / Imao :</strong> Tableau de bord (brillant/satiné), Vitres, Cuir, Mains, Multi-usages</li>
-<li><strong>Imao Parfumées :</strong> New York, Paris, Bali</li>
-<li>Sachet de lingettes à l’unité Carwash (Multi-usage / Vitre)</li>
-</ul>
+<p style="margin-top: 15px; font-weight: bold;">Pour toutes informations supplémentaires, nous sommes à votre entière écoute.[span_10](start_span)[span_10](end_span)</p>
 
-<h3>Accessoires</h3>
-<ul>
-<li>Microfibres multi-usages (Classique & XL) / Spécial vitre</li>
-<li>Lavette chamoisine x2 / Peau synthétique</li>
-<li>Peaux véritables chamoisées (Petite & Grande)</li>
-<li>Éponges marron / Raclette carrosserie</li>
-<li>Plumeau Nénénette / Plumeau chenille télescopique / Gant chenille</li>
-<li>Brosses : Tissus (poils & silicone), Jantes</li>
-<li><strong>Tapis (Lot de 4 : 2 avant / 2 arrière) :</strong> Tissus noir (liseret gris, bleu, rouge), PVC noir, PVC utilitaire avant</li>
-</ul>
-</div>
-
-<!-- 4. ACCESSOIRES MULTIPLES BOUTIQUE -->
-<div class="card">
-<h2>Accessoires Boutique & Équipements</h2>
-<h3>Signalétique & Sécurité</h3>
-<ul>
-<li>Disques A (Électrostatique / Magnétique)</li>
-<li>Conduite Accompagnée (Électrostatique / Magnétique)</li>
-<li>Bébé à bord (Électrostatique / Magnétique)</li>
-<li>Disque bleu de stationnement / Interdit de stationner</li>
-</ul>
-
-<h3>Entretien & Dépannage Rapide</h3>
-<ul>
-<li>DOT4 Liquide de frein / Start-Pilote / Graisse chaîne moto</li>
-<li><strong>FACOM :</strong> Dégrippant 400ml, Nettoyant injecteur (Diesel/Essence), Nettoyant FAP (1L), Nettoyant/Détartrant Radiateur, Anti-fuite calcaire radiateur, Anti-fuite huile moteur</li>
-<li>Bouchon de réservoir / Bouchons de valves x5</li>
-<li>Adhésifs : Gros Chatterton (noir/gris), Rubans PVC x2 (noir/rouge)</li>
-<li>Colle Glue x2 / Tendeurs x2 / Sangles à cliquet</li>
-<li>Gants : Manutention caoutchouc, Routier/Manutention cuir</li>
-<li>Feuilles OCB (Slim & Petite - Blanche/Marron) / Briquets Bic & fantaisie</li>
-</ul>
-</div>
-
-<!-- 5. ÉNERGIES & HIGH-TECH -->
-<div class="card">
-<h2>Énergies & High-Tech</h2>
-<h3>Accessoires Téléphonie & Auto</h3>
-<ul>
-<li>Supports téléphone (Pince, Ventouse, Magnétique, Grille d'aération)</li>
-<li>Allume-cigare USB / USB-C / Charge rapide</li>
-<li>Cordons de charge rapide (iOS, Micro-USB, Type-C)</li>
-</ul>
-
-<h3>Piles & Télécommandes (Blisters)</h3>
-<ul>
-<li>Piles bâtons : LR03, LR06, LR09, LR14, LR20 (Philips / Varta)</li>
-<li>Piles boutons (x2) : 1620, 2016, 2025, 2032, 2430, V23GA</li>
-</ul>
-
-<h3>Éclairage Ampoules (x10)</h3>
-<ul>
-<li>Ampoules H1, H3, H4, H7 (Philips)</li>
-<li>Ampoules signalisation : C5W, R5W, W5W, PY21W, P21W, P21/5W</li>
-<li>KITS Ampoules : H1, H1/H7, H4, H7</li>
-</ul>
-</div>
-
-<!-- 6. DÉPANNAGE & BATTERIES -->
-<div class="card">
-<h2>Dépannage & Matériel</h2>
-<ul>
-<li>Gilet jaune XL / Triangle de signalisation / Extincteur de secours</li>
-<li>Clé en croix renforcée / Clé télescopique démonte-pneu</li>
-<li>Barre de remorquage / Entonnoir avec filtre + rallonge</li>
-<li>Jerricans rouges avec bec verseur : 5L (x10), 10L (x6), 20L (x6)</li>
-<li>Compresseur allume-cigare OSRAM OTI200</li>
-<li>Kit réparation Tubeless / Kit fusibles et mini-fusibles (x10)</li>
-<li>Jeux de clés : Double, Étoile, Allen</li>
-<li>Câbles de démarrage (&lt;16, &lt;25, &lt;35)</li>
-</ul>
-
-<h3>Batteries (Standard, Renforcée, Start/Stop)</h3>
-<p class="note">Marques Tech Power & FIAMM (Gammes L1 à L5 / T-Haute / T-Basse)</p>
-</div>
-
-<!-- 7. LIQUIDES AUTOMOBILE -->
-<div class="card">
-<h2>Les Différents Liquides</h2>
-<ul>
-<li><strong>Lave-Glace Été :</strong> 2L (x12), 5L (x4)</li>
-<li><strong>Lave-Glace 4 Saisons (-15°C) :</strong> 2L (x12), 5L (x4) — <em>Sans méthanol</em></li>
-<li><strong>AdBlue Standard (avec bec verseur) :</strong> 5L (x4), 10L, 10L Anti-cristallisant</li>
-<li><strong>AdBlue Total / Clearnox :</strong> 5L Total (x2), 10L Total, 10L Clearnox</li>
-<li><strong>Liquide de Refroidissement Universel (Jaune) :</strong> 2L (x12), 5L (x4)</li>
-<li><strong>Liquide de Refroidissement Allemand G12 (Rose -37°C) :</strong> 2L (x12), 5L (x4)</li>
-</ul>
-<p class="note">💡 Possibilité de livraison en fût pour l'AdBlue et les liquides de refroidissement.</p>
-</div>
-
-<!-- 8. BAIE MÉCANIQUE ET ENTRETIEN -->
-<div class="card">
-<h2>Baie Mécanique & Consommables Ateliers</h2>
-<ul>
-<li>Dégraissant sec / Nettoyant freins</li>
-<li>Dégraissant concentré multi-surface (5L / 20L)</li>
-<li>Plaques d'immatriculation Alu (x10) / Plastique + Fond (x10)</li>
-<li>Rivets blanc/bleu/noir (x200) / Boulons avec joint de vidange</li>
-<li>Valves pneu (x100) / Masses d'équilibrage adhésives</li>
-<li>Crème de montage (5kg / 20kg)</li>
-<li>Mèches Tubeless (x60) / Champignons Tubeless (x24) + Colle</li>
-<li>Sacs absorbants Végétal (40L) & Minéral</li>
-<li>Papier essuie-mains mécanique (x6) / Papier toilette (x6)</li>
-<li>Crèmes & Savons mains granuleux</li>
-<li>Équipements (EPI) : Gants (Latex, Nitrile, Chimique), Chaussures de sécurité, Gilets</li>
-</ul>
-<p class="note" style="color: #ff0055; font-weight: bold; margin-top: 15px;">⚠️ Note : Nous ne faisons pas de pièces mécaniques.</p>
-</div>
-
+<div class="contact-bubbles">
+<div class="bubble">VINCENT : 06 49 89 22 49</div>
+<div class="bubble">RENÉ : 06 08 25 05 59</div>
+<div class="bubble">AFJ.DIFFUSION01@GMAIL.COM</div>
 </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-<p>&copy; 2027 AFJ Diffusion — Tous droits réservés.</p>
-<p>Pour toute information supplémentaire, nous sommes à votre entière écoute[span_3](start_span)[span_3](end_span).</p>
-</footer>
+<!-- SECTION 1 : PARFUMS ET DÉSODORISANTS -->
+<div class="section">
+<div class="title-box">
+<h2>PARFUMS ET DÉSODORISANTS</h2>
+</div>
+
+<div class="grid-2col">
+<div>
+<table>
+<tr><td>Arbre magique</td><td>X 24</td></tr>
+<tr><td>Clips</td><td>X 4</td></tr>
+<tr><td>Bottle</td><td>X 8</td></tr>
+<tr><td>Canette sapin</td><td>X 8</td></tr>
+<tr><td>Wrap aérateur</td><td>X 8</td></tr>
+</table>
+<p class="text-red" style="font-size: 11px; margin-bottom: 10px;">
+Parfums : Black, Vanille, Cotton, Fraise, Coco, Pêche, Bubble, Pomme, Citron, Cerise, Midnight chic, Pina colada, Mai tai, City style, Jungle, Rose-thorn, Supernova, Lavande, Beach-day, Relax et Cocktail fruit...
+</p>
+</div>
+<div>
+<img src="https://i.ibb.co/q9Wj44S/parfums1.jpg" alt="Parfums" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Visuels+Parfums'">
+</div>
+</div>
+
+<div class="grid-2col" style="margin-top: 15px;">
+<div>
+<table>
+<tr><td>Plaquette Imao</td><td>x10</td></tr>
+<tr><td>Plaquette édition sport</td><td>x10</td></tr>
+<tr><td>Vaporisateur / Spray</td><td>x10</td></tr>
+<tr><td>Imao grille Aérateur</td><td>X5</td></tr>
+</table>
+</div>
+<div>
+<img src="https://i.ibb.co/Lh2P83V/imao.jpg" alt=" Gamme Imao" class="doc-img" onerror="this.src='https://via.placeholder.com/400x200?text=Gamme+Imao'">
+</div>
+</div>
+</div>
+
+<!-- SECTION 2 : PRODUITS DE NETTOYAGE -->
+<div class="section">
+<div class="title-box">
+<h2>PRODUITS DE NETTOYAGES</h2>
+</div>
+
+<div class="grid-2col">
+<div>
+<img src="https://i.ibb.co/v4K6Jg0/nettoyage1.jpg" alt="Produits Nettoyage" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Nettoyants+Aerosols'">
+<p style="font-size: 11px; margin-top: 5px;">Nettoyant / Rénovateur plastique parfumé x6<br>Parfums Frais, Vanille, Fraise et citron[span_11](start_span)[span_11](end_span)</p>
+</div>
+<div>
+<div class="table-title">GAMME D'ENTRETIEN NÉOCLEAN 500ML[span_12](start_span)[span_12](end_span)</div>
+<table>
+<tr><td>Nettoyant soin plastique</td></tr>
+<tr><td>Nettoyant plastique satiné ou brillant</td></tr>
+<tr><td>Nettoyant vitre pulvé / aérosol</td></tr>
+<tr><td>Nettoyant tissus / insecte / moteur</td></tr>
+<tr><td>Nettoyant Brillant pneu</td></tr>
+<tr><td>Destructeur d'odeur</td></tr>
+<tr><td>Cire carrosserie effet miroir</td></tr>
+<tr><td>Efface rayure / Crème de soin cuir</td></tr>
+<tr><td>Nettoyant jantes vernis / alu / indigo</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- SECTION 3 : DÉPANNAGES -->
+<div class="section">
+<div class="title-box">
+<h2>DÉPANNAGES</h2>
+</div>
+
+<div class="grid-2col">
+<div>
+<table>
+<tr><td>Triangle de signalisation</td></tr>
+<tr><td>Extincteur secours véhicule</td></tr>
+<tr><td>Clé en croix renforcé / téléscopique</td></tr>
+<tr><td>Barre de remorquage</td></tr>
+<tr><td>Jerricans rouge + bec verseur (5L / 10L / 20L)</td></tr>
+<tr><td>Compresseur allume cigare</td></tr>
+<tr><td>Kit réparation tubeless / Fusibles</td></tr>
+</table>
+</div>
+<div>
+<img src="https://i.ibb.co/C0LqMhh/depannage.jpg" alt="Dépannage" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Equipements+Depannage'">
+</div>
+</div>
+</div>
+
+<!-- SECTION 4 : LES DIFFÉRENTS LIQUIDES -->
+<div class="section">
+<div class="title-box">
+<h2>LES DIFFÉRENTS LIQUIDES</h2>
+</div>
+
+<div class="grid-2col">
+<div>
+<img src="https://i.ibb.co/3T4S7M3/liquides.jpg" alt="Liquides" class="doc-img" onerror="this.src='https://via.placeholder.com/400x250?text=Bidons+AdBlue+et+Lave+Glace'">
+</div>
+<div>
+<div class="table-title text-red">Ad blue Standard :[span_13](start_span)[span_13](end_span)</div>
+<table>
+<tr><td>AD Blue /5 l (x4)</td></tr>
+<tr><td>AD Blue /10 l</td></tr>
+<tr><td>AD 10L anti-cristallisant</td></tr>
+</table>
+
+<div class="table-title text-red">Ad blue Total :[span_14](start_span)[span_14](end_span)</div>
+<table>
+<tr><td>AD Blue /5 l total (x2)</td></tr>
+<tr><td>AD Blue /10 l total</td></tr>
+<tr><td>AD Blue clearnox /10 l</td></tr>
+</table>
+
+<div class="note-bubble">• Nos Ad Blues sont vendus avec bec verseur[span_15](start_span)[span_15](end_span)<br>• Possibilité de livraison de fût[span_16](start_span)[span_16](end_span)</div>
+</div>
+</div>
+
+<div class="grid-2col" style="margin-top: 20px;">
+<div>
+<table>
+<tr><td>Liquide refroidissement universel -jaune / 2L</td><td>X12</td></tr>
+<tr><td>Liquide de refroidissement allemand G12 Rose -37c / 2L</td><td>X12</td></tr>
+<tr><td>Liquide refroidissement universel jaune / 5L</td><td>X4</td></tr>
+<tr><td>Liquide de refroidissement allemand G12 -37c / 5L</td><td>X4</td></tr>
+</table>
+<div class="note-bubble">• Possibilité de fût[span_17](start_span)[span_17](end_span)</div>
+</div>
+<div>
+<table>
+<tr><td>Lave glace été / 2L</td><td>X12</td></tr>
+<tr><td>Lave glace été / 5L</td><td>X4</td></tr>
+<tr><td>Lave glace 4 saisons -15c / 2L</td><td>X12</td></tr>
+<tr><td>Lave glace hiver 4 saisons -15c / 5L</td><td>X4</td></tr>
+</table>
+<div class="note-bubble">Lave-glace sans méthanol[span_18](start_span)[span_18](end_span)</div>
+</div>
+</div>
+</div>
+
+<!-- SECTION 5 : BAIE MÉCANIQUE -->
+<div class="section">
+<div class="title-box">
+<h2>BAIE MÉCANIQUE ET ENTRETIENS</h2>
+</div>
+
+<div class="grid-2col">
+<div>
+<table>
+<tr><td>Dégraissant sec / nett frein</td></tr>
+<tr><td>Dégraissant concentré multi surface 5 / 20</td></tr>
+<tr><td>Plaque immatriculation Alu (X10) / Plastique (X10)</td></tr>
+<tr><td>Rivets blanc/bleu/noir... (X200)</td></tr>
+<tr><td>Boulon avec Joint de vidange</td></tr>
+<tr><td>Valves pneu (X100) / Masses équilibrage</td></tr>
+<tr><td>Crème de montage 5 / 20 kg</td></tr>
+<tr><td>Mèches tubeless (X60) / Champignon (X24)</td></tr>
+<tr><td>Sac Absorbant végétal / minéral (X40 litres)</td></tr>
+<tr><td>Papiers pistes/mécanique (X6) / Papiers toilettes (X6)</td></tr>
+<tr><td>Gant latex, Gant nitrite, Gant chimique</td></tr>
+<tr><td>EPI : Chaussure sécurité, gilet, gant...</td></tr>
+</table>
+</div>
+<div>
+<img src="https://i.ibb.co/4WH2607/mecanique.jpg" alt="Baie mécanique" class="doc-img" onerror="this.src='https://via.placeholder.com/400x350?text=Atelier+et+Consommables'">
+<div class="note-bubble" style="margin-top: 15px; text-align: center; width: 100%;">
+Nous ne faisons pas de pièces mécaniques[span_19](start_span)[span_19](end_span)
+</div>
+</div>
+</div>
+</div>
+
+</div>
 
 </body>
 </html>
