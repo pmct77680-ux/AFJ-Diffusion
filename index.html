@@ -4,7 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Catalogue AFJ Diffusion</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root{
+      --bg:#f7f7f7;
+      --card:#ffffff;
+      --accent:#2a7ae2;
+      --text:#222;
+      --muted:#666;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.4}
+    .container{width:95%;max-width:1100px;margin:0 auto;padding:20px 0}
+    .site-header{background:var(--card);border-bottom:1px solid #e6e6e6;padding:18px 0;margin-bottom:18px}
+    .site-header h1{margin:0;color:var(--accent);font-size:2rem}
+    .subtitle{color:var(--muted);margin-top:6px}
+    #catalogue{display:grid;grid-template-columns: repeat(auto-fill,minmax(240px,1fr));gap:18px;align-items:start}
+    .product-card{background:var(--card);border:1px solid #eaeaea;padding:12px;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.03)}
+    .product-card img{width:100%;height:auto;display:block;border-radius:4px;cursor:pointer}
+    .product-title{font-weight:700;margin:8px 0 4px 0;font-size:1.1rem}
+    .product-desc{color:var(--muted);font-size:0.95rem}
+    .product-price{color:var(--accent);font-weight:700;margin-top:8px}
+    .site-footer{padding:12px 0;text-align:center;color:var(--muted);font-size:0.9rem;margin-top:24px}
+    @media (max-width:600px){.site-header,.site-footer{padding-left:12px;padding-right:12px}}
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -16,23 +38,19 @@
 
   <main class="container">
     <section id="catalogue">
-      <!-- Exemple de produit 1 -->
       <article class="product-card">
-        <img class="product-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsSAAALEgHS3X78AAABF0lEQVR4nO3QsQkAQBhE0Xf/6XcGm0Qw2gq4s3m5nJ2Z2dnZ2dnZ2dnZ2drY/8jv2gAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgP4F8gABY6FX1wAAAABJRU5ErkJggg==" alt="Image exemple">
+        <img class="product-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsSAAALEgHS3X78AAABF0lEQVR4nO3QsQkAQBhE0Xf/6XcGm0Qw2gq4s3m5nJ2Z2dnZ2dnZ2dnZ2drY/8jv2gAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgP4F8gABY6FX1wAAAABJRU5ErkJggg==" alt="Image exemple A">
         <h2 class="product-title">Produit Exemple A</h2>
         <p class="product-desc">Description courte du produit A. Idéal pour démonstration.</p>
         <p class="product-price">Prix: 19,90 €</p>
       </article>
 
-      <!-- Exemple de produit 2 -->
       <article class="product-card">
-        <img class="product-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsSAAALEgHS3X78AAABF0lEQVR4nO3QsQkAQBhE0Xf/6XcGm0Qw2gq4s3m5nJ2Z2dnZ2dnZ2dnZ2drY/8jv2gAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgP4F8gABY6FX1wAAAABJRU5ErkJggg==" alt="Image exemple">
+        <img class="product-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsSAAALEgHS3X78AAABF0lEQVR4nO3QsQkAQBhE0Xf/6XcGm0Qw2gq4s3m5nJ2Z2dnZ2dnZ2dnZ2drY/8jv2gAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgP4F8gABY6FX1wAAAABJRU5ErkJggg==" alt="Image exemple B">
         <h2 class="product-title">Produit Exemple B</h2>
         <p class="product-desc">Description courte du produit B. Utile pour tester le layout.</p>
         <p class="product-price">Prix: 29,90 €</p>
       </article>
-
-      <!-- Ajoutez d'autres produits ici en copiant l'article ci-dessus -->
     </section>
   </main>
 
@@ -43,7 +61,6 @@
   </footer>
 
   <script>
-    // Script simple: cliquer sur une image ouvre un modal basique
     document.addEventListener('click', function (e) {
       if (e.target.matches('.product-image')) {
         const src = e.target.getAttribute('src');
@@ -57,7 +74,7 @@
         modal.style.display = 'flex';
         modal.style.alignItems = 'center';
         modal.style.justifyContent = 'center';
-        modal.innerHTML = '<img src="'+src+'" style="max-width:90%; max-height:90%; border-radius:6px;">';
+        modal.innerHTML = '<img src=\"'+src+'\" style=\"max-width:90%; max-height:90%; border-radius:6px;\">';
         modal.addEventListener('click', () => modal.remove());
         document.body.appendChild(modal);
       }
