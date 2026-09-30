@@ -1,4 +1,4 @@
-# AFJ Diffusion - Base pour site statique
+# AFJ Diffusion -
 
 Dépôt minimal prêt pour GitHub Pages.
 
