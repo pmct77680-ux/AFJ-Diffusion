@@ -1,386 +1,362 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFJ Diffusion - Grossiste & Accessoiriste Automobile</title>
-    <!-- FontAwesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            blue: '#0055A5',
-                            red: '#E10600',
-                            dark: '#1E293B',
-                            light: '#F8FAFC'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFJ Diffusion - Grossiste & Accessoiriste Automobile</title>
+<!-- FontAwesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+brand: {
+blue: '#0055A5',
+red: '#E10600',
+dark: '#1E293B',
+light: '#F8FAFC'
+}
+}
+}
+}
+}
+</script>
+<style>
+.product-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+</style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-tr from-brand-blue to-brand-red rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-md">
-                        AFJ
-                    </div>
-                    <div>
-                        <span class="text-2xl font-black tracking-tight text-gray-900 block leading-none">AFJ <span class="text-brand-blue">DIFFUSION</span></span>
-                        <span class="text-xs text-gray-500 font-medium">Accessoiriste Automobile depuis 1994</span>
-                    </div>
-                </div>
+<!-- HEADER / NAVIGATION -->
+<header class="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<!-- Logo -->
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-gradient-to-tr from-brand-blue to-brand-red rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-md">
+AFJ
+ </div>
+<div>
+<span class="text-2xl font-black tracking-tight text-gray-900 block leading-none">AFJ <span class="text-brand-blue">DIFFUSION</span></span>
+<span class="text-xs text-gray-500 font-medium">Accessoiriste Automobile depuis 1994</span>
+</div>
+</div>
 
-                <!-- Contact Rapide & Panier -->
-                <div class="flex items-center space-x-6">
-                    <div class="hidden lg:flex flex-col text-right text-xs text-gray-600">
-                        <span><i class="fa-solid fa-phone text-brand-blue mr-1"></i> Vincent: <strong>06 49 89 22 49</strong></span>
-                        <span><i class="fa-solid fa-phone text-brand-blue mr-1"></i> René: <strong>06 08 25 05 59</strong></span>
-                        <span><i class="fa-solid fa-envelope text-brand-blue mr-1"></i> <strong>AFJ.DIFFUSION01@GMAIL.COM</strong></span>
-                    </div>
-                    <button onclick="toggleCart()" class="relative bg-brand-blue hover:bg-blue-800 text-white px-4 py-2.5 rounded-lg flex items-center gap-2 font-medium transition-all shadow-sm">
-                        <i class="fa-solid fa-file-invoice"></i>
-                        <span class="hidden sm:inline">Mon Devis</span>
-                        <span id="cart-count" class="bg-brand-red text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+<!-- Contact Rapide & Panier -->
+<div class="flex items-center space-x-6">
+<div class="hidden lg:flex flex-col text-right text-xs text-gray-600">
+<span><i class="fa-solid fa-phone text-brand-blue mr-1"></i> Vincent: <strong>06 49 89 22 49</strong></span>
+<span><i class="fa-solid fa-phone text-brand-blue mr-1"></i> René: <strong>06 08 25 05 59</strong></span>
+<span><i class="fa-solid fa-envelope text-brand-blue mr-1"></i> <strong>AFJ.DIFFUSION01@GMAIL.COM</strong></span>
+</div>
+<button onclick="toggleCart()" class="relative bg-brand-blue hover:bg-blue-800 text-white px-4 py-2.5 rounded-lg flex items-center gap-2 font-medium transition-all shadow-sm">
+<i class="fa-solid fa-file-invoice"></i>
+<span class="hidden sm:inline">Mon Devis</span>
+<span id="cart-count" class="bg-brand-red text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+</button>
+</div>
+</div>
+</div>
+</header>
 
-    <!-- BANNER HERO -->
-    <section class="bg-gradient-to-r from-brand-dark via-gray-900 to-brand-blue text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto text-center">
-            <span class="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-3">Vente aux professionnels & semi-grossistes</span>
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
-                Catalogue Général Produits Automobile
-            </h1>
-            <p class="max-w-2xl mx-auto text-gray-300 text-sm sm:text-base mb-8">
-                Fournisseur spécialisé pour stations-services, lavages et garages mécaniques en Île-de-France et ses alentours.
-            </p>
+<!-- BANNER HERO -->
+<section class="bg-gradient-to-r from-brand-dark via-gray-900 to-brand-blue text-white py-12 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto text-center">
+<span class="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-3">Vente aux professionnels & semi-grossistes</span>
+<h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+Catalogue Général Produits Automobile
+</h1>
+<p class="max-w-2xl mx-auto text-gray-300 text-sm sm:text-base mb-8">
+Fournisseur spécialisé pour stations-services, lavages et garages mécaniques en Île-de-France et ses alentours.
+</p>
 
-            <!-- Search Bar -->
-            <div class="max-w-xl mx-auto relative">
-                <input type="text" id="search-input" onkeyup="filterProducts()" placeholder="Rechercher un produit, une référence, une marque (ex: AdBlue, Ampoule H7, WAC...)..." 
-                    class="w-full pl-12 pr-4 py-3.5 rounded-xl text-gray-900 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm">
-                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-            </div>
-        </div>
-    </section>
+<!-- Search Bar -->
+<div class="max-w-xl mx-auto relative">
+<input type="text" id="search-input" onkeyup="filterProducts()" placeholder="Rechercher un produit, une référence, une marque (ex: AdBlue, Ampoule H7, WAC...)..." 
+class="w-full pl-12 pr-4 py-3.5 rounded-xl text-gray-900 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm">
+<i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+</div>
+</div>
+</section>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+<!-- MAIN CONTAINER -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
         
-        <!-- Category Filter Buttons -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none" id="category-filters">
-            <button onclick="selectCategory('all')" class="cat-btn active px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-brand-blue text-white shadow-sm">Toutes les catégories</button>
-            <button onclick="selectCategory('parfums')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Parfums & Désodorisants</button>
-            <button onclick="selectCategory('nettoyage')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Produits de Nettoyage</button>
-            <button onclick="selectCategory('accessoires')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Énergie, Piles & Ampoules</button>
-            <button onclick="selectCategory('depannage')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Dépannages & Sécurité</button>
-            <button onclick="selectCategory('liquides')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Liquides & AdBlue</button>
-            <button onclick="selectCategory('mecanique')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Baie Mécanique & Ateliers</button>
-        </div>
+<!-- Category Filter Buttons -->
+<div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none" id="category-filters">
+<button onclick="selectCategory('all')" class="cat-btn active px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-brand-blue text-white shadow-sm">Toutes les catégories</button>
+<button onclick="selectCategory('parfums')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Parfums & Désodorisants</button>
+<button onclick="selectCategory('nettoyage')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Produits de Nettoyage</button>
+<button onclick="selectCategory('accessoires')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Énergie, Piles & Ampoules</button>
+<button onclick="selectCategory('depannage')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Dépannages & Sécurité</button>
+<button onclick="selectCategory('liquides')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Liquides & AdBlue</button>
+<button onclick="selectCategory('mecanique')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 border border-gray-200">Baie Mécanique & Ateliers</button>
+</div>
 
-        <!-- PRODUCTS GRID -->
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Dynamic Insertion via JS -->
-        </div>
+<!-- PRODUCTS GRID -->
+<div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Dynamic Insertion via JS -->
+</div>
 
-        <div id="no-results" class="hidden text-center py-16">
-            <i class="fa-solid fa-box-open text-5xl text-gray-300 mb-3"></i>
-            <p class="text-gray-500 font-medium">Aucun produit ne correspond à votre recherche.</p>
-        </div>
-    </main>
+<div id="no-results" class="hidden text-center py-16">
+<i class="fa-solid fa-box-open text-5xl text-gray-300 mb-3"></i>
+<p class="text-gray-500 font-medium">Aucun produit ne correspond à votre recherche.</p>
+</div>
+</main>
 
-    <!-- CART SIDEBAR / MODAL -->
-    <div id="cart-drawer" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden transition-opacity">
-        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col">
-            <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
-                <h3 class="font-bold text-lg text-gray-800 flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-brand-blue"></i> Récapitulatif Demande de Devis
-                </h3>
-                <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 p-1">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
+<!-- CART SIDEBAR / MODAL -->
+<div id="cart-drawer" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden transition-opacity">
+<div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col">
+<div class="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+<h3 class="font-bold text-lg text-gray-800 flex items-center gap-2">
+<i class="fa-solid fa-list-check text-brand-blue"></i> Récapitulatif Demande de Devis
+</h3>
+<button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 p-1">
+<i class="fa-solid fa-xmark text-xl"></i>
+</button>
+</div>
 
-            <!-- Cart Items -->
-            <div id="cart-items" class="p-4 overflow-y-auto flex-grow space-y-3">
-                <!-- Dynamic cart content -->
-            </div>
+<!-- Cart Items -->
+<div id="cart-items" class="p-4 overflow-y-auto flex-grow space-y-3">
+<!-- Dynamic cart content -->
+</div>
 
-            <!-- Cart Footer -->
-            <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
-                <div class="text-xs text-gray-500">
-                    * Indiquez les références souhaitées. Notre équipe vous recontactera rapidement avec les disponibilités et tarifs grossistes.
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <button onclick="sendOrder('email')" class="w-full bg-brand-blue hover:bg-blue-800 text-white font-medium py-2.5 px-3 rounded-lg text-sm flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-envelope"></i> Envoyer par E-mail
-                    </button>
-                    <button onclick="sendOrder('whatsapp')" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 px-3 rounded-lg text-sm flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp"></i> Via WhatsApp
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Cart Footer -->
+<div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+<div class="text-xs text-gray-500">
+* Indiquez les références souhaitées. Notre équipe vous recontactera rapidement avec les disponibilités et tarifs grossistes.
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button onclick="sendOrder('email')" class="w-full bg-brand-blue hover:bg-blue-800 text-white font-medium py-2.5 px-3 rounded-lg text-sm flex items-center justify-center gap-2">
+<i class="fa-solid fa-envelope"></i> Envoyer par E-mail
+</button>
+<button onclick="sendOrder('whatsapp')" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 px-3 rounded-lg text-sm flex items-center justify-center gap-2">
+<i class="fa-brands fa-whatsapp"></i> Via WhatsApp
+</button>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-400 py-10 mt-12 border-t border-gray-800 text-xs sm:text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h4 class="text-white font-bold text-base mb-3">AFJ DIFFUSION</h4>
-                <p class="leading-relaxed mb-3">
-                    Entreprise familiale créée en 1994, spécialisée dans la distribution d'accessoires automobiles pour stations-services, lavages et garages en Île-de-France.
-                </p>
-                <p class="text-gray-500">
-                    © 2026 AFJ Diffusion. Tous droits réservés.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-base mb-3">Nos Catégories Principales</h4>
-                <ul class="space-y-1.5">
-                    <li><a href="#" onclick="selectCategory('parfums')" class="hover:text-white">Arbres Magiques & Parfums d'intérieur</a></li>
-                    <li><a href="#" onclick="selectCategory('nettoyage')" class="hover:text-white">Gamme d'entretien Néoclean & RedBull</a></li>
-                    <li><a href="#" onclick="selectCategory('accessoires')" class="hover:text-white">Piles, Ampoules Philips & Chargeurs</a></li>
-                    <li><a href="#" onclick="selectCategory('liquides')" class="hover:text-white">AdBlue, Liquides de refroidissement & Lave-glace</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-base mb-3">Contact Direct Commercial</h4>
-                <div class="space-y-2">
-                    <p class="flex items-center gap-2"><i class="fa-solid fa-user text-brand-blue"></i> Vincent : <a href="tel:0649892249" class="text-white hover:underline">06 49 89 22 49</a></p>
-                    <p class="flex items-center gap-2"><i class="fa-solid fa-user text-brand-blue"></i> René : <a href="tel:0608250559" class="text-white hover:underline">06 08 25 05 59</a></p>
-                    <p class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-blue"></i> Email : <a href="mailto:afj.diffusion01@gmail.com" class="text-white hover:underline">AFJ.DIFFUSION01@GMAIL.COM</a></p>
-                    <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-blue"></i> Secteur : Île-de-France et alentours</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 py-10 mt-12 border-t border-gray-800 text-xs sm:text-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div>
+<h4 class="text-white font-bold text-base mb-3">AFJ DIFFUSION</h4>
+<p class="leading-relaxed mb-3">
+Entreprise familiale créée en 1994, spécialisée dans la distribution d'accessoires automobiles pour stations-services, lavages et garages en Île-de-France.
+</p>
+<p class="text-gray-500">
+© 2026 AFJ Diffusion. Tous droits réservés.
+</p>
+</div>
+<div>
+<h4 class="text-white font-bold text-base mb-3">Nos Catégories Principales</h4>
+<ul class="space-y-1.5">
+<li><a href="#" onclick="selectCategory('parfums')" class="hover:text-white">Arbres Magiques & Parfums d'intérieur</a></li>
+<li><a href="#" onclick="selectCategory('nettoyage')" class="hover:text-white">Gamme d'entretien Néoclean & RedBull</a></li>
+<li><a href="#" onclick="selectCategory('accessoires')" class="hover:text-white">Piles, Ampoules Philips & Chargeurs</a></li>
+<li><a href="#" onclick="selectCategory('liquides')" class="hover:text-white">AdBlue, Liquides de refroidissement & Lave-glace</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold text-base mb-3">Contact Direct Commercial</h4>
+<div class="space-y-2">
+<p class="flex items-center gap-2"><i class="fa-solid fa-user text-brand-blue"></i> Vincent : <a href="tel:0649892249" class="text-white hover:underline">06 49 89 22 49</a></p>
+<p class="flex items-center gap-2"><i class="fa-solid fa-user text-brand-blue"></i> René : <a href="tel:0608250559" class="text-white hover:underline">06 08 25 05 59</a></p>
+<p class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-blue"></i> Email : <a href="mailto:afj.diffusion01@gmail.com" class="text-white hover:underline">AFJ.DIFFUSION01@GMAIL.COM</a></p>
+<p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-blue"></i> Secteur : Île-de-France et alentours</p>
+</div>
+</div>
+</div>
+</footer>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // Catalog Data extracted from images
-        const products = [
-            // PARFUMS ET DESODORISANTS
-            { id: 101, name: "Arbre Magique - Senteurs Variées", category: "parfums", pack: "Boîte / Présentoir x 24", icon: "fa-tree", desc: "Black, Vanille, Cotton, Fraise, Coco, Pêche, Pomme..." },
-            { id: 102, name: "Imao Parfums - Plaquettes & Vaporisateurs", category: "parfums", pack: "Plaquette x10 / Spray x10", icon: "fa-spray-can", desc: "Plaquettes Imao, Édition Sport, Aérateur X5, Vaporisateurs" },
-            { id: 103, name: "Présentoirs Parfums Canette (Coca, Pepsi, Fanta)", category: "parfums", pack: "Format Canette / Box", icon: "fa-wine-bottle", desc: "Coca-Cola, Fanta Orange/Grape/Strawberry, Pepsi Logo" },
-            { id: 104, name: "Diffuseur Vent-Clip California & Géo", category: "parfums", pack: "Aérateur / Clip", icon: "fa-fan", desc: "California Scents Aérateur, Geo Cat, Geo Dog, Geo Loop" },
+<!-- JAVASCRIPT LOGIC -->
+<script>
+// Catalog Data extracted from images
+const products = [
+// PARFUMS ET DESODORISANTS
+{ id: 101, name: "Arbre Magique - Senteurs Variées", category: "parfums", pack: "Boîte / Présentoir x 24", icon: "fa-tree", desc: "Black, Vanille, Cotton, Fraise, Coco, Pêche, Pomme..." },
+{ id: 102, name: "Imao Parfums - Plaquettes & Vaporisateurs", category: "parfums", pack: "Plaquette x10 / Spray x10", icon: "fa-spray-can", desc: "Plaquettes Imao, Édition Sport, Aérateur X5, Vaporisateurs" },
+{ id: 103, name: "Présentoirs Parfums Canette (Coca, Pepsi, Fanta)", category: "parfums", pack: "Format Canette / Box", icon: "fa-wine-bottle", desc: "Coca-Cola, Fanta Orange/Grape/Strawberry, Pepsi Logo" },
+{ id: 104, name: "Diffuseur Vent-Clip California & Géo", category: "parfums", pack: "Aérateur / Clip", icon: "fa-fan", desc: "California Scents Aérateur, Geo Cat, Geo Dog, Geo Loop" },
 
-            // NETTOYAGE
-            { id: 201, name: "Rénovateur Plastique Parfumés x6", category: "nettoyage", pack: "Lot de 6 spays", icon: "fa-spray-can-sparkles", desc: "Parfums Frais, Vanille, Fraise et Citron" },
-            { id: 202, name: "Gamme RedBull Racing Care", category: "nettoyage", pack: "Bouteille / Spray", icon: "fa-car-side", desc: "Nettoyant spray intérieur/extérieur, Cire carrosserie, Shampoing, Brillant pneu" },
-            { id: 203, name: "Gamme Néoclean 500ml", category: "nettoyage", pack: "Spray 500ml", icon: "fa-pump-soap", desc: "Soin plastique, Vitre, Tissus, Insecte, Moteur, Jantes, Anti-rayure" },
-            { id: 204, name: "Lingettes Spéciales Néoclean & Imao", category: "nettoyage", pack: "Sachet lingettes", icon: "fa-box", desc: "Tableau de bord, Vitres, Cuir, Main, Multi-usage" },
-            { id: 205, name: "Accessoires d'Entretien Carrosserie", category: "nettoyage", pack: "À l'unité / Lot", icon: "fa-broom", desc: "Microfibres XL, Peaux chamoisées, Éponges, Raclettes, Plumeaux, Brosses" },
-            { id: 206, name: "Tapis Véhicules (Lot de 4 ou Utilitaire)", category: "nettoyage", pack: "Jeu complet", icon: "fa-rug", desc: "Tapis tissus liseret Gris/Bleu/Rouge, Tapis PVC Noir/Avant" },
+// NETTOYAGE
+{ id: 201, name: "Rénovateur Plastique Parfumés x6", category: "nettoyage", pack: "Lot de 6 spays", icon: "fa-spray-can-sparkles", desc: "Parfums Frais, Vanille, Fraise et Citron" },
+{ id: 202, name: "Gamme RedBull Racing Care", category: "nettoyage", pack: "Bouteille / Spray", icon: "fa-car-side", desc: "Nettoyant spray intérieur/extérieur, Cire carrosserie, Shampoing, Brillant pneu" },
+{ id: 203, name: "Gamme Néoclean 500ml", category: "nettoyage", pack: "Spray 500ml", icon: "fa-pump-soap", desc: "Soin plastique, Vitre, Tissus, Insecte, Moteur, Jantes, Anti-rayure" },
+{ id: 204, name: "Lingettes Spéciales Néoclean & Imao", category: "nettoyage", pack: "Sachet lingettes", icon: "fa-box", desc: "Tableau de bord, Vitres, Cuir, Main, Multi-usage" },
+{ id: 205, name: "Accessoires d'Entretien Carrosserie", category: "nettoyage", pack: "À l'unité / Lot", icon: "fa-broom", desc: "Microfibres XL, Peaux chamoisées, Éponges, Raclettes, Plumeaux, Brosses" },
+{ id: 206, name: "Tapis Véhicules (Lot de 4 ou Utilitaire)", category: "nettoyage", pack: "Jeu complet", icon: "fa-rug", desc: "Tapis tissus liseret Gris/Bleu/Rouge, Tapis PVC Noir/Avant" },
 
-            // ACCESSOIRES, ENERGIES & AMPOULES
-            { id: 301, name: "Piles Philips & Duracell Blister", category: "accessoires", pack: "Lot 2x10 ou Blister 4", icon: "fa-battery-full", desc: "Piles Bâtons LR03, LR06, LR09, LR14, LR20 et Piles Boutons 2032, 2016, 1620..." },
-            { id: 302, name: "Ampoules d'Éclairage Philips (H1, H3, H4, H7...)", category: "accessoires", pack: "Blister / Kit", icon: "fa-lightbulb", desc: "Ampoules H1, H3, H4, H7, C5W, R5W, W5W, PY21W et Kits Ampoules" },
-            { id: 303, name: "Accessoires Téléphone & Chargeurs Auto", category: "accessoires", pack: "À l'unité", icon: "fa-mobile-screen-button", desc: "Supports Smartphone, Allume-cigare USB/Type-C, Câbles de charge rapide" },
-            { id: 304, name: "Disques Signalisation Véhicules", category: "accessoires", pack: "Électrostatique / Aimant", icon: "fa-circle-dot", desc: "Conduite Accompagnée, Disque A, Bébé à bord, Disque Bleu Stationnement" },
+// ACCESSOIRES, ENERGIES & AMPOULES
+{ id: 301, name: "Piles Philips & Duracell Blister", category: "accessoires", pack: "Lot 2x10 ou Blister 4", icon: "fa-battery-full", desc: "Piles Bâtons LR03, LR06, LR09, LR14, LR20 et Piles Boutons 2032, 2016, 1620..." },
+{ id: 302, name: "Ampoules d'Éclairage Philips (H1, H3, H4, H7...)", category: "accessoires", pack: "Blister / Kit", icon: "fa-lightbulb", desc: "Ampoules H1, H3, H4, H7, C5W, R5W, W5W, PY21W et Kits Ampoules" },
+{ id: 303, name: "Accessoires Téléphone & Chargeurs Auto", category: "accessoires", pack: "À l'unité", icon: "fa-mobile-screen-button", desc: "Supports Smartphone, Allume-cigare USB/Type-C, Câbles de charge rapide" },
+{ id: 304, name: "Disques Signalisation Véhicules", category: "accessoires", pack: "Électrostatique / Aimant", icon: "fa-circle-dot", desc: "Conduite Accompagnée, Disque A, Bébé à bord, Disque Bleu Stationnement" },
 
-            // DEPANNAGES
-            { id: 401, name: "Équipements de Sécurité Routière", category: "depannage", pack: "Unité", icon: "fa-triangle-exclamation", desc: "Gilet Jaune XL, Triangle de signalisation, Extincteur véhicule" },
-            { id: 402, name: "Outillage & Outillage Pneumatique", category: "depannage", pack: "Unité", icon: "fa-wrench", desc: "Clé en croix, Clé télescopique, Barre de remorquage, Compresseur Allume-cigare" },
-            { id: 403, name: "Jerricans Rouge avec Bec Verseur", category: "depannage", pack: "5L / 10L / 20L", icon: "fa-gas-pump", desc: "Réservoirs homologués 5 Litres (x10), 10 Litres (x6), 20 Litres (x6)" },
-            { id: 404, name: "Batteries Titanium Fiamm Auto", category: "depannage", pack: "Unité", icon: "fa-car-battery", desc: "Gamme L1, L2, L3, L4, L5 (50Ah à 100Ah) - Standard / Renforcé / Start-Stop" },
-            { id: 405, name: "Câbles de Démarrage Professionnels", category: "depannage", pack: "Paire", icon: "fa-bolt", desc: "Câbles Section < 16, < 25, < 35" },
-            { id: 406, name: "Bombes Anti-Crevaison & Kits Tubeless", category: "depannage", pack: "Spray / Kit", icon: "fa-compact-disc", desc: "Stop Crevaison Holts/Facom (300ml, 400ml, 500ml, 600ml), Mèches & Outils" },
+// DEPANNAGES
+{ id: 401, name: "Équipements de Sécurité Routière", category: "depannage", pack: "Unité", icon: "fa-triangle-exclamation", desc: "Gilet Jaune XL, Triangle de signalisation, Extincteur véhicule" },
+{ id: 402, name: "Outillage & Outillage Pneumatique", category: "depannage", pack: "Unité", icon: "fa-wrench", desc: "Clé en croix, Clé télescopique, Barre de remorquage, Compresseur Allume-cigare" },
+{ id: 403, name: "Jerricans Rouge avec Bec Verseur", category: "depannage", pack: "5L / 10L / 20L", icon: "fa-gas-pump", desc: "Réservoirs homologués 5 Litres (x10), 10 Litres (x6), 20 Litres (x6)" },
+{ id: 404, name: "Batteries Titanium Fiamm Auto", category: "depannage", pack: "Unité", icon: "fa-car-battery", desc: "Gamme L1, L2, L3, L4, L5 (50Ah à 100Ah) - Standard / Renforcé / Start-Stop" },
+{ id: 405, name: "Câbles de Démarrage Professionnels", category: "depannage", pack: "Paire", icon: "fa-bolt", desc: "Câbles Section < 16, < 25, < 35" },
+{ id: 406, name: "Bombes Anti-Crevaison & Kits Tubeless", category: "depannage", pack: "Spray / Kit", icon: "fa-compact-disc", desc: "Stop Crevaison Holts/Facom (300ml, 400ml, 500ml, 600ml), Mèches & Outils" },
 
-            // LIQUIDES ET ADBLUE
-            { id: 501, name: "AdBlue Standard / Total / Clearnox", category: "liquides", pack: "Bidon 5L / 10L", icon: "fa-oil-can", desc: "AdBlue 5L (x4), 10L, 10L Anti-cristallisant, Clearnox (Livré avec bec verseur)" },
-            { id: 502, name: "Liquides de Refroidissement Universels & G12", category: "liquides", pack: "2 Litres / 5 Litres", icon: "fa-flask", desc: "Liquide Jaune Universel, Liquide Rose G12 (-37°C) (Possibilité de Fût)" },
-            { id: 503, name: "Lave-Glace Été / 4 Saisons / Hiver (-15°C)", category: "liquides", pack: "2L (x12) / 5L (x4)", icon: "fa-windshield", desc: "Formule sans méthanol pour protection optimale du pare-brise" },
+// LIQUIDES ET ADBLUE
+{ id: 501, name: "AdBlue Standard / Total / Clearnox", category: "liquides", pack: "Bidon 5L / 10L", icon: "fa-oil-can", desc: "AdBlue 5L (x4), 10L, 10L Anti-cristallisant, Clearnox (Livré avec bec verseur)" },
+{ id: 502, name: "Liquides de Refroidissement Universels & G12", category: "liquides", pack: "2 Litres / 5 Litres", icon: "fa-flask", desc: "Liquide Jaune Universel, Liquide Rose G12 (-37°C) (Possibilité de Fût)" },
+{ id: 503, name: "Lave-Glace Été / 4 Saisons / Hiver (-15°C)", category: "liquides", pack: "2L (x12) / 5L (x4)", icon: "fa-windshield", desc: "Formule sans méthanol pour protection optimale du pare-brise" },
 
-            // BAIE MECANIQUE
-            { id: 601, name: "Degraissant Frein & Multi-Surfaces", category: "mecanique", pack: "Aérosol / Bidon 5L-20L", icon: "fa-spray-can", desc: "Dégraissant sec / nettoyant frein, Dégraissant concentré" },
-            { id: 602, name: "Plaques d'Immatriculation & Rivets", category: "mecanique", pack: "Lot de 10 / Pack 200", icon: "fa-id-card", desc: "Plaques Alu, Plaques Plastique, Rivets Blanc/Bleu/Noir" },
-            { id: 603, name: "Sacs Absorbants Végétal & Minéral 40L", category: "mecanique", pack: "Sac 40 Litres", icon: "fa-box-tissue", desc: "Absorbant Pro-Sorb atelier & voirie pour huiles et hydrocarbures" },
-            { id: 604, name: "Consommables Atelier & PNEU TechMax", category: "mecanique", pack: "Carton / Boîte", icon: "fa-gears", desc: "Masses d'équilibrage, Champignons tubeless, Colle, Papiers d'essuyage, Gants Nitrile/Latex" }
-        ];
+// BAIE MECANIQUE
+{ id: 601, name: "Degraissant Frein & Multi-Surfaces", category: "mecanique", pack: "Aérosol / Bidon 5L-20L", icon: "fa-spray-can", desc: "Dégraissant sec / nettoyant frein, Dégraissant concentré" },
+{ id: 602, name: "Plaques d'Immatriculation & Rivets", category: "mecanique", pack: "Lot de 10 / Pack 200", icon: "fa-id-card", desc: "Plaques Alu, Plaques Plastique, Rivets Blanc/Bleu/Noir" },
+{ id: 603, name: "Sacs Absorbants Végétal & Minéral 40L", category: "mecanique", pack: "Sac 40 Litres", icon: "fa-box-tissue", desc: "Absorbant Pro-Sorb atelier & voirie pour huiles et hydrocarbures" },
+{ id: 604, name: "Consommables Atelier & PNEU TechMax", category: "mecanique", pack: "Carton / Boîte", icon: "fa-gears", desc: "Masses d'équilibrage, Champignons tubeless, Colle, Papiers d'essuyage, Gants Nitrile/Latex" }
+];
 
-        let cart = [];
+let cart = [];
 
-        // Render Products
-        function renderProducts(items) {
-            const grid = document.getElementById('product-grid');
-            const noResults = document.getElementById('no-results');
+// Render Products
+function renderProducts(items) {
+const grid = document.getElementById('product-grid');
+const noResults = document.getElementById('no-results');
+    
+if (items.length === 0) {
+grid.innerHTML = '';
+noResults.classList.remove('hidden');
+return;}
 
-            if (items.length === 0) {
-                grid.innerHTML = '';
-                noResults.classList.remove('hidden');
-                return;
-            }
+noResults.classList.add('hidden');
+grid.innerHTML = items.map(p => `
+<div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 transition-all duration-200 flex flex-col justify-between">
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<span class="w-10 h-10 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center text-lg">
+<i class="fa-solid ${p.icon}"></i>
+</span>
+<span class="text-xs font-semibold px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md">
+${p.pack}
+</span>
+</div>
+<h3 class="font-bold text-gray-900 text-base mb-1.5 leading-snug">${p.name}</h3>
+<p class="text-gray-500 text-xs leading-relaxed mb-4">${p.desc}</p>
+</div>
+<div class="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+<span class="text-xs font-bold text-brand-blue uppercase">AFJ Catalogue</span>
+<button onclick="addToCart(${p.id})" class="bg-white hover:bg-brand-blue hover:text-white text-gray-700 border border-gray-300 font-medium text-xs px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm">
+<i class="fa-solid fa-plus"></i> Ajouter au devis
+</button>
+</div>
+</div>
+`).join('');}
 
-            noResults.classList.add('hidden');
-            grid.innerHTML = items.map(p => `
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 transition-all duration-200 flex flex-col justify-between">
-                    <div class="p-5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="w-10 h-10 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center text-lg">
-                                <i class="fa-solid ${p.icon}"></i>
-                            </span>
-                            <span class="text-xs font-semibold px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md">
-                                ${p.pack}
-                            </span>
-                        </div>
-                        <h3 class="font-bold text-gray-900 text-base mb-1.5 leading-snug">${p.name}</h3>
-                        <p class="text-gray-500 text-xs leading-relaxed mb-4">${p.desc}</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-                        <span class="text-xs font-bold text-brand-blue uppercase">AFJ Catalogue</span>
-                        <button onclick="addToCart(${p.id})" class="bg-white hover:bg-brand-blue hover:text-white text-gray-700 border border-gray-300 font-medium text-xs px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm">
-                            <i class="fa-solid fa-plus"></i> Ajouter au devis
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
+// Filter by Category
+function selectCategory(category) {
+document.querySelectorAll('.cat-btn').forEach(btn => {
+btn.classList.remove('bg-brand-blue', 'text-white', 'shadow-sm');
+btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');});
 
-        // Filter by Category
-        function selectCategory(category) {
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-brand-blue', 'text-white', 'shadow-sm');
-                btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');
-            });
+event.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
+event.target.classList.add('bg-brand-blue', 'text-white', 'shadow-sm');
 
-            event.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
-            event.target.classList.add('bg-brand-blue', 'text-white', 'shadow-sm');
+if (category === 'all') {
+renderProducts(products);
+} else {
+const filtered = products.filter(p => p.category === category);
+renderProducts(filtered);}}
 
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
-        }
+// Search Filter
+function filterProducts() {
+const query = document.getElementById('search-input').value.toLowerCase();
+const filtered = products.filter(p => 
+p.name.toLowerCase().includes(query) || 
+p.desc.toLowerCase().includes(query) ||
+p.pack.toLowerCase().includes(query));
+renderProducts(filtered);}
 
-        // Search Filter
-        function filterProducts() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const filtered = products.filter(p => 
-                p.name.toLowerCase().includes(query) || 
-                p.desc.toLowerCase().includes(query) ||
-                p.pack.toLowerCase().includes(query)
-            );
-            renderProducts(filtered);
-        }
+// Cart Actions
+function addToCart(productId) {
+const product = products.find(p => p.id === productId);
+const existing = cart.find(item => item.id === productId);
 
-        // Cart Actions
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existing = cart.find(item => item.id === productId);
+if (existing) {
+existing.quantity += 1;
+} else {
+cart.push({ ...product, quantity: 1 });}
+updateCart();
+toggleCart(true);}
 
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-            updateCart();
-            toggleCart(true);
-        }
+function updateCartQuantity(id, delta) {
+const item = cart.find(i => i.id === id);
+if (item) {
+item.quantity += delta;
+if (item.quantity <= 0) {
+cart = cart.filter(i => i.id !== id);}}
+updateCart();}
 
-        function updateCartQuantity(id, delta) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.quantity += delta;
-                if (item.quantity <= 0) {
-                    cart = cart.filter(i => i.id !== id);
-                }
-            }
-            updateCart();
-        }
+function updateCart() {
+const countEl = document.getElementById('cart-count');
+const itemsContainer = document.getElementById('cart-items');
 
-        function updateCart() {
-            const countEl = document.getElementById('cart-count');
-            const itemsContainer = document.getElementById('cart-items');
+const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+countEl.innerText = totalCount;
 
-            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            countEl.innerText = totalCount;
+if (cart.length === 0) {
+itemsContainer.innerHTML = `
+<div class="text-center py-12 text-gray-400">
+<i class="fa-solid fa-cart-flatbed text-4xl mb-2"></i>
+<p class="text-sm">Votre liste de devis est vide.</p>
+</div>
+`;
+return;}
 
-            if (cart.length === 0) {
-                itemsContainer.innerHTML = `
-                    <div class="text-center py-12 text-gray-400">
-                        <i class="fa-solid fa-cart-flatbed text-4xl mb-2"></i>
-                        <p class="text-sm">Votre liste de devis est vide.</p>
-                    </div>
-                `;
-                return;
-            }
+itemsContainer.innerHTML = cart.map(item => `
+<div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200">
+<div class="flex-grow pr-2">
+<h4 class="font-bold text-xs text-gray-800">${item.name}</h4>
+<span class="text-xs text-gray-500">${item.pack}</span>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="updateCartQuantity(${item.id}, -1)" class="w-6 h-6 rounded bg-white border border-gray-300 text-gray-600 flex items-center justify-center font-bold text-xs">-</button>
+<span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
+<button onclick="updateCartQuantity(${item.id}, 1)" class="w-6 h-6 rounded bg-white border border-gray-300 text-gray-600 flex items-center justify-center font-bold text-xs">+</button>
+</div>
+</div>
+`).join('');}
+function toggleCart(forceOpen = false) {
+const drawer = document.getElementById('cart-drawer');
+if (forceOpen) {
+drawer.classList.remove('hidden');} else {
+drawer.classList.toggle('hidden');}}
 
-            itemsContainer.innerHTML = cart.map(item => `
-                <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200">
-                    <div class="flex-grow pr-2">
-                        <h4 class="font-bold text-xs text-gray-800">${item.name}</h4>
-                        <span class="text-xs text-gray-500">${item.pack}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="updateCartQuantity(${item.id}, -1)" class="w-6 h-6 rounded bg-white border border-gray-300 text-gray-600 flex items-center justify-center font-bold text-xs">-</button>
-                        <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
-                        <button onclick="updateCartQuantity(${item.id}, 1)" class="w-6 h-6 rounded bg-white border border-gray-300 text-gray-600 flex items-center justify-center font-bold text-xs">+</button>
-                    </div>
-                </div>
-            `).join('');
-        }
+// Send Order via Email or Whatsapp
+function sendOrder(type) {
+    if (cart.length === 0) {
+alert("Votre devis est vide ! Veuillez ajouter des produits.");
+return;}
 
-        function toggleCart(forceOpen = false) {
-            const drawer = document.getElementById('cart-drawer');
-            if (forceOpen) {
-                drawer.classList.remove('hidden');
-            } else {
-                drawer.classList.toggle('hidden');
-            }
-        }
+let message = "Bonjour AFJ Diffusion, je souhaite recevoir un devis pour les produits suivants :\n\n";
+cart.forEach(item => {
+message += `- ${item.name} (${item.pack}) : Quantité ${item.quantity}\n`;});
 
-        // Send Order via Email or Whatsapp
-        function sendOrder(type) {
-            if (cart.length === 0) {
-                alert("Votre devis est vide ! Veuillez ajouter des produits.");
-                return;
-            }
-
-            let message = "Bonjour AFJ Diffusion, je souhaite recevoir un devis pour les produits suivants :\n\n";
-            cart.forEach(item => {
-                message += `- ${item.name} (${item.pack}) : Quantité ${item.quantity}\n`;
-            });
-
-            message += "\nMerci de me recontacter avec les tarifs grossistes et les conditions de livraison.";
-
-            if (type === 'email') {
-                const subject = encodeURIComponent("Demande de devis - Catalogue AFJ");
-                const body = encodeURIComponent(message);
-                window.location.href = `mailto:AFJ.DIFFUSION01@GMAIL.COM?subject=${subject}&body=${body}`;
-            } else if (type === 'whatsapp') {
-                const text = encodeURIComponent(message);
-                // Numéro Vincent par défaut
-                window.open(`https://wa.me/33649892249?text=${text}`, '_blank');
-            }
-        }
-
-        // Initialize
-        renderProducts(products);
-    </script>
+message += "\nMerci de me recontacter avec les tarifs grossistes et les conditions de livraison.";
+if (type === 'email') {
+const subject = encodeURIComponent("Demande de devis - Catalogue AFJ");
+const body = encodeURIComponent(message);
+window.location.href = `mailto:AFJ.DIFFUSION01@GMAIL.COM?subject=${subject}&body=${body}`;
+} else if (type === 'whatsapp') {
+const text = encodeURIComponent(message);
+// Numéro Vincent par défaut
+window.open(`https://wa.me/33649892249?text=${text}`, '_blank');}}
+// Initialize
+renderProducts(products);
+</script>
 </body>
 </html>
