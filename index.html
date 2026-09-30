@@ -1,244 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AFJ Diffusion - Catalogue 2027</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap">
-<style>
-:root{
-  --fg:#000;
-  --bg:#fff;
-  --accent:#d3241a;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px)+64px)}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--fg);
-  font:16px/1.45 "Helvetica Neue",Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
-.ttl{
-  font-family:"Bungee Inline",Impact,"Arial Black",sans-serif;
-  text-transform:uppercase;
-  font-weight:400;
-  letter-spacing:1px;
-}
-.container{
-  max-width:1100px;
-  margin:20px auto;
-  padding:12px;
-}
-header{
-  border:4px solid #000;
-  border-radius:6px;
-  padding:18px 14px;
-  text-align:center;
-  background:linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
-}
-header h1{margin:0;font-size:clamp(1.6rem,6vw,3rem);line-height:1.05}
-.intro{
-  max-width:980px;
-  margin:14px auto;
-  text-align:center;
-  font-size:.95rem;
-  color:#222;
-}
-nav{
-  position:sticky;
-  top:env(safe-area-inset-top,0px);
-  background:#fff;
-  border-bottom:3px solid #000;
-  padding:10px 12px;
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  z-index:10;
-  margin-top:12px;
-  border-radius:6px;
-}
-nav a{
-  white-space:nowrap;
-  color:#000;
-  text-decoration:none;
-  border:2px solid #000;
-  border-radius:6px;
-  padding:8px 12px;
-  font-size:.88rem;
-  font-weight:800;
-  text-transform:uppercase;
-  background:transparent;
-}
-nav a:hover{background:#000;color:#fff}
-main{
-  max-width:1100px;
-  margin:18px auto;
-  padding:8px;
-}
-section{
-  margin:28px 0;
-  padding:14px;
-  border:2px solid #000;
-  border-radius:6px;
-  background:#fff;
-}
-h2{
-  text-align:center;
-  font-size:clamp(1.2rem,4vw,1.9rem);
-  margin:0 0 12px;
-  text-decoration:underline;
-  text-decoration-thickness:3px;
-  text-underline-offset:6px;
-}
-h3{
-  margin:16px 0 8px;
-  font-size:.95rem;
-  font-weight:800;
-  text-transform:uppercase;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:10px;
-  padding:0;
-  margin:12px 0 0;
-  list-style:none;
-  border-top:2px solid #000;
-  border-left:2px solid #000;
-}
-.grid li{
-  border-right:2px solid #000;
-  border-bottom:2px solid #000;
-  padding:10px;
-  font-size:.95rem;
-  font-weight:700;
-  background:#fff;
-}
-.note{color:var(--accent);font-weight:800;margin:10px 0;font-size:.95rem}
-.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:12px 0 0;align-items:start}
-.gal img{width:100%;height:auto;display:block;border:3px solid #000;border-radius:4px}
-footer{text-align:center;padding:20px 12px;font-size:.85rem;border-top:3px solid #000;margin-top:18px}
-.search{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  margin:12px 0 0;
-}
-#q{flex:1;padding:12px;font-size:1rem;border:3px solid #000;border-radius:6px}
-.bubble{display:inline-block;border:3px solid #000;border-radius:40px;padding:10px 26px;margin:6px;font-weight:800;font-size:.9rem;color:#000;text-decoration:none;text-transform:uppercase}
-@media (max-width:640px){
-  nav a{padding:8px 10px;font-size:.8rem}
-  header{padding:14px}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AFJ Diffusion - Catalogue 2027</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap">
+  <style>
+    :root{--fg:#000;--bg:#fff;--accent:#d3241a;box-sizing:border-box}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 "Helvetica Neue",Helvetica,Arial,sans-serif}
+    .ttl{font-family:"Bungee Inline",Impact,"Arial Black",sans-serif;text-transform:uppercase;font-weight:400}
+    .wrap{max-width:1200px;margin:18px auto;padding:12px}
+    header{border:4px solid #000;border-radius:6px;padding:18px 14px;text-align:center;background:#fff}
+    header h1{margin:0;font-size:clamp(1.6rem,5vw,2.8rem)}
+    nav{position:sticky;top:0;background:#fff;border-bottom:3px solid #000;padding:10px 12px;display:flex;gap:8px;overflow-x:auto;z-index:20;margin-top:12px;border-radius:6px}
+    nav a{white-space:nowrap;color:#000;text-decoration:none;border:2px solid #000;border-radius:6px;padding:8px 12px;font-size:.88rem;font-weight:800;text-transform:uppercase}
+    nav a:hover{background:#000;color:#fff}
+    main{margin:18px auto;padding:8px}
+    section{margin:20px 0;padding:14px;border:2px solid #000;border-radius:6px;background:#fff}
+    h2{text-align:center;margin:0 0 12px;font-size:clamp(1.1rem,3.5vw,1.9rem);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;padding:0;margin:12px 0 0;list-style:none;border-top:2px solid #000;border-left:2px solid #000}
+    .grid li{border-right:2px solid #000;border-bottom:2px solid #000;padding:10px;font-size:.95rem;font-weight:700;background:#fff}
+    .pdfwrap{display:grid;grid-template-columns:1fr 380px;gap:16px}
+    .embedpdf{width:100%;height:78vh;border:3px solid #000;border-radius:6px}
+    .side{border:2px solid #000;padding:12px;border-radius:6px;height:78vh;overflow:auto}
+    .btn{display:inline-block;padding:10px 14px;border:3px solid #000;border-radius:8px;background:transparent;font-weight:800;text-decoration:none;color:#000;margin:6px}
+    .btn:hover{background:#000;color:#fff}
+    footer{text-align:center;padding:18px 12px;font-size:.85rem;border-top:3px solid #000;margin-top:18px}
+    @media (max-width:980px){.pdfwrap{grid-template-columns:1fr;}.side{height:auto}.embedpdf{height:60vh}}
+  </style>
 </head>
 <body>
-<div class="container">
-<header><h1 class="ttl">Accessoiristes automobiles</h1></header>
+  <div class="wrap">
+    <header>
+      <h1 class="ttl">Accessoiristes automobiles</h1>
+      <p style="margin:8px 0 0;font-weight:600">Catalogue 2027 - AFJ Diffusion</p>
+    </header>
 
-<div class="intro">
-  <p>Catalogue 2027 - Présentation compacte et lisible, catégories mises à jour comme demandé. Le contenu produit (votre catalogue) peut être collé dans les sections ci‑dessous si vous le souhaitez.</p>
-</div>
+    <nav>
+      <a href="#diffuseurs-et-accessoires-parfumes">DIFFUSEURS ET LEURS ACCESSOIRES PARFUMÉS</a>
+      <a href="#produits-de-nettoyage">PRODUITS DE NETTOYAGE ET LEURS ACCESSOIRES D’ENTRETIEN</a>
+      <a href="#accessoires-divers-boutique">ACCESSOIRES DIVERS POUR BOUTIQUE</a>
+      <a href="#accessoires-de-depannage">ACCESSOIRES DE DÉPANNAGE</a>
+      <a href="#liquides-de-fonctionnement">LIQUIDES DE FONCTIONNEMENT</a>
+      <a href="#baie-mecanique-entretien">BAIE MÉCANIQUE ET ENTRETIEN</a>
+      <a href="#voir-pdf">VOIR LE PDF</a>
+    </nav>
 
-<nav>
-  <a href="#diffuseurs-et-accessoires-parfumes">DIFFUSEURS ET LEURS ACCESSOIRES PARFUMÉS</a>
-  <a href="#produits-de-nettoyage">PRODUITS DE NETTOYAGE ET LEURS ACCESSOIRES D’ENTRETIEN</a>
-  <a href="#accessoires-divers-boutique">ACCESSOIRES DIVERS POUR BOUTIQUE</a>
-  <a href="#accessoires-de-depannage">ACCESSOIRES DE DÉPANNAGE</a>
-  <a href="#liquides-de-fonctionnement">LIQUIDES DE FONCTIONNEMENT</a>
-  <a href="#baie-mecanique-entretien">BAIE MÉCANIQUE ET ENTRETIEN</a>
-</nav>
+    <main>
+      <section id="diffuseurs-et-accessoires-parfumes">
+        <h2>DIFFUSEURS ET LEURS ACCESSOIRES PARFUMÉS</h2>
+        <p>Placez ici vos éléments de catalogue. Si vous préférez, laissez le PDF principal afficher tout le catalogue et utilisez ces sections pour résumés rapides.</p>
+        <ul class="grid">
+          <li>Diffuseur A - Réf. 001</li>
+          <li>Diffuseur B - Réf. 002</li>
+          <li>Recharge parfum 100ml - Réf. 010</li>
+          <li>Support magnétique - Réf. 020</li>
+        </ul>
+      </section>
 
-<main>
-  <!-- Section : DIFFUSEURS ET LEURS ACCESSOIRES PARFUMÉS -->
-  <section id="diffuseurs-et-accessoires-parfumes">
-    <h2>DIFFUSEURS ET LEURS ACCESSOIRES PARFUMÉS</h2>
-    <!-- Collez ici votre catalogue original pour cette catégorie -->
-    <h3>Produits (exemples)</h3>
-    <ul class="grid">
-      <li>Diffuseur A - Réf. 001</li>
-      <li>Diffuseur B - Réf. 002</li>
-      <li>Recharge parfum 100ml - Réf. 010</li>
-      <li>Support magnétique - Réf. 020</li>
-    </ul>
-  </section>
+      <section id="produits-de-nettoyage">
+        <h2>PRODUITS DE NETTOYAGE ET LEURS ACCESSOIRES D’ENTRETIEN</h2>
+        <ul class="grid">
+          <li>Nettoyant vitres - Réf. 101</li>
+          <li>Shampoing carrosserie - Réf. 102</li>
+          <li>Chiffon microfibre - Réf. 110</li>
+          <li>Kit tampon de polissage - Réf. 120</li>
+        </ul>
+      </section>
 
-  <!-- Section : PRODUITS DE NETTOYAGE -->
-  <section id="produits-de-nettoyage">
-    <h2>PRODUITS DE NETTOYAGE ET LEURS ACCESSOIRES D’ENTRETIEN</h2>
-    <!-- Collez ici votre catalogue original pour cette catégorie -->
-    <h3>Produits (exemples)</h3>
-    <ul class="grid">
-      <li>Nettoyant vitres - Réf. 101</li>
-      <li>Shampoing carrosserie - Réf. 102</li>
-      <li>Chiffon microfibre - Réf. 110</li>
-      <li>Kit tampon de polissage - Réf. 120</li>
-    </ul>
-  </section>
+      <section id="accessoires-divers-boutique">
+        <h2>ACCESSOIRES DIVERS POUR BOUTIQUE</h2>
+        <ul class="grid">
+          <li>Présentoir métal - Réf. 201</li>
+          <li>Sachets cadeaux - Réf. 210</li>
+          <li>Étiquettes prix - Réf. 220</li>
+          <li>Emballage cadeau - Réf. 230</li>
+        </ul>
+      </section>
 
-  <!-- Section : ACCESSOIRES DIVERS POUR BOUTIQUE -->
-  <section id="accessoires-divers-boutique">
-    <h2>ACCESSOIRES DIVERS POUR BOUTIQUE</h2>
-    <!-- Collez ici votre catalogue original pour cette catégorie -->
-    <h3>Produits (exemples)</h3>
-    <ul class="grid">
-      <li>Présentoir métal - Réf. 201</li>
-      <li>Sachets cadeaux - Réf. 210</li>
-      <li>Étiquettes prix - Réf. 220</li>
-      <li>Emballage cadeau - Réf. 230</li>
-    </ul>
-  </section>
+      <section id="accessoires-de-depannage">
+        <h2>ACCESSOIRES DE DÉPANNAGE</h2>
+        <ul class="grid">
+          <li>Trousse de secours - Réf. 301</li>
+          <li>Câbles démarrage - Réf. 310</li>
+          <li>Lampe LED - Réf. 320</li>
+          <li>Triangle de signalisation - Réf. 330</li>
+        </ul>
+      </section>
 
-  <!-- Section : ACCESSOIRES DE DÉPANNAGE -->
-  <section id="accessoires-de-depannage">
-    <h2>ACCESSOIRES DE DÉPANNAGE</h2>
-    <!-- Collez ici votre catalogue original pour cette catégorie -->
-    <h3>Produits (exemples)</h3>
-    <ul class="grid">
-      <li>Trousse de secours - Réf. 301</li>
-      <li>Câbles démarrage - Réf. 310</li>
-      <li>Lampe LED - Réf. 320</li>
-      <li>Triangle de signalisation - Réf. 330</li>
-    </ul>
-  </section>
+      <section id="liquides-de-fonctionnement">
+        <h2>LIQUIDES DE FONCTIONNEMENT</h2>
+        <ul class="grid">
+          <li>Liquide lave-glace - Réf. 401</li>
+          <li>Liquide de frein - Réf. 410</li>
+          <li>Huile moteur 5W30 - Réf. 420</li>
+          <li>Additif carburant - Réf. 430</li>
+        </ul>
+      </section>
 
-  <!-- Section : LIQUIDES DE FONCTIONNEMENT -->
-  <section id="liquides-de-fonctionnement">
-    <h2>LIQUIDES DE FONCTIONNEMENT</h2>
-    <!-- Collez ici votre catalogue original pour cette catégorie -->
-    <h3>Produits (exemples)</h3>
-    <ul class="grid">
-      <li>Liquide lave-glace - Réf. 401</li>
-      <li>Liquide de frein - Réf. 410</li>
-      <li>Huile moteur 5W30 - Réf. 420</li>
-      <li>Additif carburant - Réf. 430</li>
-    </ul>
-  </section>
+      <section id="baie-mecanique-entretien">
+        <h2>BAIE MÉCANIQUE ET ENTRETIEN</h2>
+        <ul class="grid">
+          <li>Clé à molette 20mm - Réf. 501</li>
+          <li>Tournevis set 6pcs - Réf. 510</li>
+          <li>Pompe manuelle - Réf. 520</li>
+          <li>Filtre à air - Réf. 530</li>
+        </ul>
+      </section>
 
-  <!-- Section : BAIE MÉCANIQUE ET ENTRETIEN -->
-  <section id="baie-mecanique-entretien">
-    <h2>BAIE MÉCANIQUE ET ENTRETIEN</h2>
-    <!-- Collez ici votre catalogue original pour cette catégorie -->
-    <h3>Produits (exemples)</h3>
-    <ul class="grid">
-      <li>Clé à molette 20mm - Réf. 501</li>
-      <li>Tournevis set 6pcs - Réf. 510</li>
-      <li>Pompe manuelle - Réf. 520</li>
-      <li>Filtre à air - Réf. 530</li>
-    </ul>
-  </section>
+      <section id="voir-pdf">
+        <h2>VOIR ET TÉLÉCHARGER LE PDF</h2>
+        <div class="pdfwrap">
+          <iframe class="embedpdf" src="catalogue2027.pdf" title="Catalogue 2027" frameborder="0"></iframe>
+          <aside class="side">
+            <p style="font-weight:800">Actions rapides</p>
+            <p>
+              <a class="btn" href="catalogue2027.pdf" download>Télécharger le PDF</a>
+            </p>
+            <p style="margin-top:12px;font-weight:700">Conseils d'utilisation</p>
+            <ol style="padding-left:18px">
+              <li>Uploadez votre fichier <em>catalogue2027.pdf</em> à la racine du dépôt.</li>
+              <li>Si le PDF est volumineux, GitHub peut ne pas afficher un aperçu direct, mais le téléchargement fonctionnera.</li>
+              <li>Pour améliorer l'accessibilité, ajoutez des descriptions de produits dans les sections ci-dessus.</li>
+            </ol>
+            <p style="margin-top:12px;font-weight:700">Compatibilité</p>
+            <p>Cette page fonctionne sur navigateurs modernes. Sur mobile, l'iframe s'adapte automatiquement.</p>
+          </aside>
+        </div>
+      </section>
 
-</main>
+    </main>
 
-<footer>
-  <p>AFJ Diffusion - Catalogue 2027 · Présentation compacte</p>
-</footer>
-</div>
+    <footer>
+      <p>AFJ Diffusion · Catalogue 2027 · <span style="font-weight:700">Ne modifiez pas le fichier PDF sans sauvegarde</span></p>
+    </footer>
+  </div>
 </body>
 </html>
